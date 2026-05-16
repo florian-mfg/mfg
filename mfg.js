@@ -1,7 +1,7 @@
 const stage = document.querySelector("#rings-stage");
 const ringSources = [stage.dataset.ringOne, stage.dataset.ringTwo];
 const rings = [];
-const maxRings = 12;
+const maxRings = 20;
 
 function randomBetween(min, max) {
   return min + Math.random() * (max - min);
@@ -21,19 +21,19 @@ function bounds() {
   };
 }
 
-function addRing(src, x, y, vx, vy, wasTouchingBorder = false) {
+function addRing(sourceIndex, x, y, vx, vy, wasTouchingBorder = false) {
   if (rings.length >= maxRings) return;
 
   const image = document.createElement("img");
   image.className = "rings-page__mark";
-  image.src = src;
+  image.src = ringSources[sourceIndex];
   image.alt = "";
   image.setAttribute("aria-hidden", "true");
   stage.appendChild(image);
 
   rings.push({
     element: image,
-    src,
+    sourceIndex,
     x,
     y,
     vx,
@@ -46,8 +46,10 @@ function addRing(src, x, y, vx, vy, wasTouchingBorder = false) {
 function duplicateRing(ring) {
   if (rings.length >= maxRings) return;
 
+  const nextSourceIndex = ring.sourceIndex === 0 ? 1 : 0;
+
   addRing(
-    ring.src,
+    nextSourceIndex,
     ring.x,
     ring.y,
     ring.vx * -0.85 + randomBetween(-0.45, 0.45),
@@ -113,8 +115,8 @@ function resetRings() {
   stage.innerHTML = "";
   rings.length = 0;
 
-  addRing(ringSources[0], Math.min(area.width * 0.18, area.width - size), Math.min(area.height * 0.18, area.height - size), 1.25, 0.9);
-  addRing(ringSources[1], Math.min(area.width * 0.58, area.width - size), Math.min(area.height * 0.44, area.height - size), -0.95, 1.15);
+  addRing(0, Math.min(area.width * 0.18, area.width - size), Math.min(area.height * 0.18, area.height - size), 1.25, 0.9);
+  addRing(1, Math.min(area.width * 0.58, area.width - size), Math.min(area.height * 0.44, area.height - size), -0.95, 1.15);
 }
 
 startRings();
