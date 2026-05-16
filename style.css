@@ -32,6 +32,11 @@ body {
   background: #fff;
 }
 
+.home-page,
+.home-page body {
+  background: transparent;
+}
+
 .project-body {
   background: #000;
 }
