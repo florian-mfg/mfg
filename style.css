@@ -130,19 +130,19 @@ button {
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   height: var(--bar-height);
-  background: #000;
-  color: #fff;
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
   font-size: 1.7rem;
   transition: background-color 140ms linear, color 140ms linear;
 }
 
 .site-bar:hover {
-  background: #fff;
-  color: #000;
+  background: #000;
+  color: #fff;
 }
 
 .site-bar:hover .site-bar__icon {
-  filter: none;
+  filter: invert(1);
 }
 
 .site-bar__link,
@@ -165,26 +165,8 @@ button {
 .site-bar__icon {
   width: 23px;
   height: 23px;
-  filter: invert(1);
-  transition: filter 140ms linear, transform 140ms linear;
-}
-
-.light-menu .site-bar {
-  background: #fff;
-  color: #000;
-}
-
-.light-menu .site-bar:hover {
-  background: #000;
-  color: #fff;
-}
-
-.light-menu .site-bar .site-bar__icon {
   filter: none;
-}
-
-.light-menu .site-bar:hover .site-bar__icon {
-  filter: invert(1);
+  transition: filter 140ms linear, transform 140ms linear;
 }
 
 .site-bar__scale:hover .site-bar__icon,
