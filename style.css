@@ -150,6 +150,15 @@ button {
   filter: invert(1);
 }
 
+.is-home .site-bar:hover {
+  background: #fff;
+  color: #000;
+}
+
+.is-home .site-bar:hover .site-bar__icon {
+  filter: none;
+}
+
 .site-bar__link,
 .site-bar__scale {
   display: flex;
@@ -179,15 +188,13 @@ button {
   transform: rotate(90deg);
 }
 
-@media (min-width: 701px) {
-  body:not(.light-menu):not(.is-home) .site-bar {
-    background: #000;
-    color: #fff;
-  }
+.project-body .site-bar {
+  background: #000;
+  color: #fff;
+}
 
-  body:not(.light-menu):not(.is-home) .site-bar__icon {
-    filter: invert(1);
-  }
+.project-body .site-bar__icon {
+  filter: invert(1);
 }
 
 .site-bar__close {
@@ -376,19 +383,8 @@ body:not(.is-home) .site-bar__plus {
     --text-size: 16px;
   }
 
-  .site-bar {
-    top: 0;
-    bottom: auto;
-  }
-
-  .page {
-    padding-top: calc(var(--bar-height) + var(--page-margin));
-    padding-bottom: var(--page-margin);
-  }
-
   .project-grid {
     grid-template-columns: repeat(var(--mobile-columns), minmax(0, 1fr));
-    padding-top: var(--bar-height);
   }
 
   .project-tile__caption {
@@ -400,7 +396,7 @@ body:not(.is-home) .site-bar__plus {
     grid-template-columns: 1fr;
     gap: 0;
     min-height: 100vh;
-    padding-top: calc(var(--bar-height) + 12px);
+    padding-top: 12px;
     padding-right: var(--page-margin);
     font-size: 16px;
     line-height: 1;
@@ -486,6 +482,5 @@ body:not(.is-home) .site-bar__plus {
     display: grid;
     gap: 6px;
     justify-content: start;
-    padding-bottom: var(--page-margin);
   }
 }
