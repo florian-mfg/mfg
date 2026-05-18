@@ -282,6 +282,34 @@ body:not(.is-home) .site-bar__plus {
   max-width: none;
 }
 
+.legal-page {
+  min-height: 100vh;
+  padding-top: 12px;
+  font-size: clamp(14px, 0.96vw, 18px);
+  line-height: 0.95;
+}
+
+.legal-page__content {
+  width: 66.666%;
+}
+
+.legal-page h1,
+.legal-page h2,
+.legal-page h3,
+.legal-page p {
+  margin: 0;
+  font: inherit;
+}
+
+.legal-page h2,
+.legal-page h3 {
+  margin-top: 1em;
+}
+
+.legal-page a {
+  text-decoration: none;
+}
+
 .rings-page {
   position: relative;
   min-height: 100vh;
@@ -413,6 +441,11 @@ body:not(.is-home) .site-bar__plus {
   color: #fff;
 }
 
+.global-footer--white {
+  background: #fff;
+  color: #000;
+}
+
 .global-footer a {
   white-space: nowrap;
 }
@@ -486,6 +519,15 @@ body:not(.is-home) .site-bar__plus {
 
   .info-page__rings .ring-mark + .ring-mark {
     margin-top: 0;
+  }
+
+  .legal-page {
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  .legal-page__content {
+    width: 100%;
   }
 
   .rings-page__mark {
