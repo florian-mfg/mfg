@@ -10,7 +10,7 @@ let activeIntervals = new Map();
 const projects = [
   {
     page: "project-mfg-sk.html",
-    title: "SK",
+    title: "SKW",
     images: ["material/mfg-sk_1.jpg", "material/mfg-sk_2.jpg", "material/mfg-sk_3.jpg"],
   },
   {
@@ -36,7 +36,7 @@ const projects = [
   },
   {
     page: "project-mfg-sences.html",
-    title: "Sences",
+    title: "SEP",
     images: ["material/mfg_sences_1.jpg", "material/mfg_sences_2.jpg", "material/mfg_sences_3.jpg"],
   },
    {
@@ -46,7 +46,7 @@ const projects = [
   },
   {
     page: "project-mfg-candleholder.html",
-    title: "Candleholder",
+    title: "CHP",
     images: ["material/mfg_candleholder_1.jpg", "material/mfg_candleholder_2.jpg", "material/mfg_candleholder_3.jpg"],
   },
   {
