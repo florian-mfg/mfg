@@ -52,8 +52,8 @@ function duplicateRing(ring) {
     nextSourceIndex,
     ring.x,
     ring.y,
-    ring.vx * -0.85 + randomBetween(-0.45, 0.45),
-    ring.vy * -0.85 + randomBetween(-0.45, 0.45),
+    ring.vx * -0.72 + randomBetween(-0.28, 0.28),
+    ring.vy * -0.72 + randomBetween(-0.28, 0.28),
     true
   );
 }
@@ -115,8 +115,8 @@ function resetRings() {
   stage.innerHTML = "";
   rings.length = 0;
 
-  addRing(0, Math.min(area.width * 0.18, area.width - size), Math.min(area.height * 0.18, area.height - size), 1.25, 0.9);
-  addRing(1, Math.min(area.width * 0.58, area.width - size), Math.min(area.height * 0.44, area.height - size), -0.95, 1.15);
+  addRing(0, Math.min(area.width * 0.18, area.width - size), Math.min(area.height * 0.28, area.height - size), 0.82, 0.58);
+  addRing(1, Math.min(area.width * 0.68, area.width - size), Math.min(area.height * 0.2, area.height - size), -0.62, 0.74);
 }
 
 startRings();
