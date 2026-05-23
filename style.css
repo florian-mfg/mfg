@@ -367,6 +367,7 @@ body:not(.is-home) .site-bar__plus {
   grid-template-columns: repeat(3, 1fr);
   gap: 0;
   margin-right: calc(var(--page-margin) * -1);
+  margin-bottom: 22.222222vw;
   margin-left: calc(var(--page-margin) * -1);
 }
 
@@ -562,6 +563,7 @@ body:not(.is-home) .site-bar__plus {
 
   .project-media-grid {
     grid-template-columns: 1fr;
+    margin-bottom: 66.666667vw;
   }
 
   .project-media-grid__module {
