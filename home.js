@@ -58,7 +58,7 @@ const projects = [
   
   {
     page: "project-mfg-fred.html",
-    title: "Fred",
+    title: "FIP",
     images: ["material/mfg_fred_1.jpg", "material/mfg_fred_2.jpg", "material/mfg_fred_3.jpg"],
   },
   {
