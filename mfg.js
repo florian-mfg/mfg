@@ -1,7 +1,9 @@
 const stage = document.querySelector("#rings-stage");
 const ringSources = [stage.dataset.ringOne, stage.dataset.ringTwo];
 const rings = [];
-const maxRings = 20;
+let nextRingId = 0;
+const ignoredCollisionPairs = new Set();
+const maxRings = 16;
 
 function randomBetween(min, max) {
   return min + Math.random() * (max - min);
@@ -21,6 +23,10 @@ function bounds() {
   };
 }
 
+function collisionKey(ring, otherRing) {
+  return ring.id < otherRing.id ? `${ring.id}:${otherRing.id}` : `${otherRing.id}:${ring.id}`;
+}
+
 function addRing(sourceIndex, x, y, vx, vy, wasTouchingBorder = false) {
   if (rings.length >= maxRings) return;
 
@@ -31,7 +37,8 @@ function addRing(sourceIndex, x, y, vx, vy, wasTouchingBorder = false) {
   image.setAttribute("aria-hidden", "true");
   stage.appendChild(image);
 
-  rings.push({
+  const ring = {
+    id: nextRingId,
     element: image,
     sourceIndex,
     x,
@@ -40,7 +47,11 @@ function addRing(sourceIndex, x, y, vx, vy, wasTouchingBorder = false) {
     vy,
     size: ringSize(),
     wasTouchingBorder,
-  });
+  };
+
+  nextRingId += 1;
+  rings.push(ring);
+  return ring;
 }
 
 function duplicateRing(ring) {
@@ -48,7 +59,7 @@ function duplicateRing(ring) {
 
   const nextSourceIndex = ring.sourceIndex === 0 ? 1 : 0;
 
-  addRing(
+  const duplicate = addRing(
     nextSourceIndex,
     ring.x,
     ring.y,
@@ -56,6 +67,61 @@ function duplicateRing(ring) {
     ring.vy * -0.72 + randomBetween(-0.28, 0.28),
     true
   );
+
+  if (duplicate) {
+    ignoredCollisionPairs.add(collisionKey(ring, duplicate));
+  }
+}
+
+function bounceTouchingRings() {
+  for (let index = 0; index < rings.length; index += 1) {
+    for (let nextIndex = index + 1; nextIndex < rings.length; nextIndex += 1) {
+      const ring = rings[index];
+      const otherRing = rings[nextIndex];
+      const ringCenterX = ring.x + ring.size / 2;
+      const ringCenterY = ring.y + ring.size / 2;
+      const otherCenterX = otherRing.x + otherRing.size / 2;
+      const otherCenterY = otherRing.y + otherRing.size / 2;
+      let dx = otherCenterX - ringCenterX;
+      let dy = otherCenterY - ringCenterY;
+      let distance = Math.hypot(dx, dy);
+      const minDistance = (ring.size + otherRing.size) / 2;
+      const key = collisionKey(ring, otherRing);
+
+      if (distance >= minDistance) {
+        ignoredCollisionPairs.delete(key);
+        continue;
+      }
+
+      if (ignoredCollisionPairs.has(key)) continue;
+
+      if (distance === 0) {
+        dx = 1;
+        dy = 0;
+        distance = 1;
+      }
+
+      const normalX = dx / distance;
+      const normalY = dy / distance;
+      const overlap = minDistance - distance;
+
+      ring.x -= (normalX * overlap) / 2;
+      ring.y -= (normalY * overlap) / 2;
+      otherRing.x += (normalX * overlap) / 2;
+      otherRing.y += (normalY * overlap) / 2;
+
+      const relativeVx = otherRing.vx - ring.vx;
+      const relativeVy = otherRing.vy - ring.vy;
+      const speedTowardEachOther = relativeVx * normalX + relativeVy * normalY;
+
+      if (speedTowardEachOther >= 0) continue;
+
+      ring.vx += speedTowardEachOther * normalX;
+      ring.vy += speedTowardEachOther * normalY;
+      otherRing.vx -= speedTowardEachOther * normalX;
+      otherRing.vy -= speedTowardEachOther * normalY;
+    }
+  }
 }
 
 function moveRings(now) {
@@ -100,6 +166,12 @@ function moveRings(now) {
     ring.element.style.transform = `translate(${ring.x}px, ${ring.y}px)`;
   });
 
+  bounceTouchingRings();
+
+  rings.forEach((ring) => {
+    ring.element.style.transform = `translate(${ring.x}px, ${ring.y}px)`;
+  });
+
   requestAnimationFrame(moveRings);
 }
 
@@ -114,6 +186,8 @@ function resetRings() {
 
   stage.innerHTML = "";
   rings.length = 0;
+  ignoredCollisionPairs.clear();
+  nextRingId = 0;
 
   addRing(0, Math.min(area.width * 0.18, area.width - size), Math.min(area.height * 0.28, area.height - size), 0.82, 0.58);
   addRing(1, Math.min(area.width * 0.68, area.width - size), Math.min(area.height * 0.2, area.height - size), -0.62, 0.74);
