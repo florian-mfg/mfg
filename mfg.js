@@ -3,7 +3,8 @@ const ringSources = [stage.dataset.ringOne, stage.dataset.ringTwo];
 const rings = [];
 let nextRingId = 0;
 const ignoredCollisionPairs = new Set();
-const maxRings = 16;
+const desktopMaxRings = 16;
+const mobileMaxRings = 8;
 
 function randomBetween(min, max) {
   return min + Math.random() * (max - min);
@@ -11,6 +12,17 @@ function randomBetween(min, max) {
 
 function ringSize() {
   return window.matchMedia("(max-width: 700px)").matches ? 92 : Math.min(150, Math.max(90, window.innerWidth * 0.1));
+}
+
+function maxRings() {
+  return window.matchMedia("(max-width: 700px)").matches ? mobileMaxRings : desktopMaxRings;
+}
+
+function pruneRings() {
+  while (rings.length > maxRings()) {
+    const ring = rings.pop();
+    ring.element.remove();
+  }
 }
 
 function bounds() {
@@ -30,7 +42,7 @@ function collisionKey(ring, otherRing) {
 }
 
 function addRing(sourceIndex, x, y, vx, vy, wasTouchingBorder = false) {
-  if (rings.length >= maxRings) return;
+  if (rings.length >= maxRings()) return;
 
   const image = document.createElement("img");
   image.className = "rings-page__mark";
@@ -57,7 +69,7 @@ function addRing(sourceIndex, x, y, vx, vy, wasTouchingBorder = false) {
 }
 
 function duplicateRing(ring) {
-  if (rings.length >= maxRings) return;
+  if (rings.length >= maxRings()) return;
 
   const nextSourceIndex = ring.sourceIndex === 0 ? 1 : 0;
 
@@ -161,6 +173,8 @@ function keepRingInBounds(ring, area) {
 }
 
 function moveRings(now) {
+  pruneRings();
+
   const area = bounds();
 
   rings.forEach((ring) => {
