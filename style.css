@@ -395,6 +395,36 @@ body:not(.is-home) .site-bar__plus {
   aspect-ratio: 9 / 4;
 }
 
+.project-media-grid__video {
+  position: relative;
+  grid-column: 1 / -1;
+  aspect-ratio: 9 / 4;
+  overflow: hidden;
+  background: #000;
+}
+
+.project-media-grid__video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  pointer-events: none;
+}
+
+.project-media-grid__video-toggle {
+  position: absolute;
+  right: var(--page-margin);
+  bottom: var(--page-margin);
+  z-index: 1;
+  padding: 6px 10px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: #000;
+  color: #fff;
+  line-height: 1;
+}
+
 .project-media-grid__module {
   position: relative;
   display: grid;

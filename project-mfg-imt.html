@@ -16,17 +16,18 @@
           <h1 class="project-page__title">IMT</h1>
           <div>Imprint Typetool</div>
           <br>
-          <div><a href="https://imprint-typetool.de">https://imprint-typetool.de</a></div>
+          <div><a href="https://imprint-typetool.de" target="_blank" rel="noopener noreferrer">https://imprint-typetool.de</a></div>
         </div>
         <p class="project-page__description">Imprint is an experimental typographic tool inspired by industrial printing techniques, where a visual language emerges from imperfection. The tool transfers text onto a digital canvas through an interactive printing process. The way users interact with the canvas directly shapes how type appears, making each imprint a unique result of both human input and machine-like behavior. By shifting functional, utilitarian type into an expressive space, Imprint explores typography as a physical and temporal process rather than a fixed graphic form.</p>
       </header>
       <section class="project-media-grid" aria-label="IMT images">
+        <div class="project-media-grid__video">
+          <iframe src="https://player.vimeo.com/video/1197141716?badge=0&amp;autopause=0&amp;muted=1&amp;loop=1&amp;controls=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="mfg-imprint_showcase-1"></iframe>
+          <button class="project-media-grid__video-toggle" type="button" aria-label="Start video" data-playing="false">Start</button>
+        </div>
         <img class="project-media-grid__regular" src="projects/mfg-imprint_1.jpg" alt="CM" loading="eager" />
-        <img class="project-media-grid__regular" src="projects/mfg-imprint_2.jpg" alt="CM" loading="eager" />
-        <img class="project-media-grid__regular" src="projects/mfg-imprint_3.jpg" alt="CM" loading="eager" />
-        <img class="project-media-grid__regular" src="projects/mfg-imprint_4.jpg" alt="CM" loading="eager" />
         <img class="project-media-grid__regular" src="projects/mfg-imprint_5.jpg" alt="CM" loading="eager" />
-        <img class="project-media-grid__regular" src="projects/mfg-imprint_6.jpg" alt="CM" loading="eager" />
+        <img class="project-media-grid__regular" src="projects/mfg-imprint_3.jpg" alt="CM" loading="eager" />
         <img class="project-media-grid__regular" src="projects/mfg-imprint_7.jpg" alt="CM" loading="eager" />
         <img class="project-media-grid__regular" src="projects/mfg-imprint_8.jpg" alt="CM" loading="eager" />
         <img class="project-media-grid__regular" src="projects/mfg-imprint_9.jpg" alt="CM" loading="eager" />
@@ -36,6 +37,7 @@
         <img class="project-media-grid__regular" src="projects/mfg-imprint_13.jpg" alt="CM" loading="eager" />
         <img class="project-media-grid__regular" src="projects/mfg-imprint_14.jpg" alt="CM" loading="eager" />
         <img class="project-media-grid__regular" src="projects/mfg-imprint_15.jpg" alt="CM" loading="eager" />
+        
       </section>
     </article>
     <footer class="global-footer" aria-label="Footer">
@@ -52,5 +54,33 @@
       </a>
       <a class="site-bar__link site-bar__link--right" href="info.html">Info</a>
     </nav>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+      const videoModule = document.querySelector(".project-media-grid__video");
+
+      if (videoModule && window.Vimeo) {
+        const iframe = videoModule.querySelector("iframe");
+        const toggle = videoModule.querySelector(".project-media-grid__video-toggle");
+        const player = new Vimeo.Player(iframe);
+
+        player.pause();
+
+        toggle.addEventListener("click", () => {
+          const isPlaying = toggle.dataset.playing === "true";
+
+          if (isPlaying) {
+            player.pause();
+            toggle.dataset.playing = "false";
+            toggle.textContent = "Start";
+            toggle.setAttribute("aria-label", "Start video");
+          } else {
+            player.play();
+            toggle.dataset.playing = "true";
+            toggle.textContent = "Stop";
+            toggle.setAttribute("aria-label", "Stop video");
+          }
+        });
+      }
+    </script>
   </body>
 </html>
