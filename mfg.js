@@ -15,11 +15,13 @@ function ringSize() {
 
 function bounds() {
   const bar = document.querySelector(".site-bar");
-  const barHeight = bar ? bar.offsetHeight : 0;
+  const stageRect = stage.getBoundingClientRect();
+  const barRect = bar ? bar.getBoundingClientRect() : null;
+  const barTop = barRect && barRect.top > stageRect.top ? barRect.top - stageRect.top : stage.clientHeight;
 
   return {
     width: stage.clientWidth,
-    height: Math.max(stage.clientHeight - barHeight, 120),
+    height: Math.max(Math.min(stage.clientHeight, barTop), 120),
   };
 }
 
@@ -124,6 +126,40 @@ function bounceTouchingRings() {
   }
 }
 
+function keepRingInBounds(ring, area) {
+  let touchedBorder = false;
+
+  if (ring.x <= 0) {
+    ring.x = 0;
+    ring.vx = Math.abs(ring.vx);
+    touchedBorder = true;
+  }
+
+  if (ring.x + ring.size >= area.width) {
+    ring.x = area.width - ring.size;
+    ring.vx = -Math.abs(ring.vx);
+    touchedBorder = true;
+  }
+
+  if (ring.y <= 0) {
+    ring.y = 0;
+    ring.vy = Math.abs(ring.vy);
+    touchedBorder = true;
+  }
+
+  if (ring.y + ring.size >= area.height) {
+    ring.y = area.height - ring.size;
+    ring.vy = -Math.abs(ring.vy);
+    touchedBorder = true;
+  }
+
+  if (touchedBorder && !ring.wasTouchingBorder) {
+    duplicateRing(ring);
+  }
+
+  ring.wasTouchingBorder = touchedBorder;
+}
+
 function moveRings(now) {
   const area = bounds();
 
@@ -131,44 +167,14 @@ function moveRings(now) {
     ring.size = ringSize();
     ring.x += ring.vx;
     ring.y += ring.vy;
-
-    let touchedBorder = false;
-
-    if (ring.x <= 0) {
-      ring.x = 0;
-      ring.vx = Math.abs(ring.vx);
-      touchedBorder = true;
-    }
-
-    if (ring.x + ring.size >= area.width) {
-      ring.x = area.width - ring.size;
-      ring.vx = -Math.abs(ring.vx);
-      touchedBorder = true;
-    }
-
-    if (ring.y <= 0) {
-      ring.y = 0;
-      ring.vy = Math.abs(ring.vy);
-      touchedBorder = true;
-    }
-
-    if (ring.y + ring.size >= area.height) {
-      ring.y = area.height - ring.size;
-      ring.vy = -Math.abs(ring.vy);
-      touchedBorder = true;
-    }
-
-    if (touchedBorder && !ring.wasTouchingBorder) {
-      duplicateRing(ring);
-    }
-
-    ring.wasTouchingBorder = touchedBorder;
+    keepRingInBounds(ring, area);
     ring.element.style.transform = `translate(${ring.x}px, ${ring.y}px)`;
   });
 
   bounceTouchingRings();
 
   rings.forEach((ring) => {
+    keepRingInBounds(ring, area);
     ring.element.style.transform = `translate(${ring.x}px, ${ring.y}px)`;
   });
 
