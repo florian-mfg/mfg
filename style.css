@@ -628,8 +628,7 @@ body:not(.is-home) .site-bar__plus {
     justify-content: start;
   }
 
-  .info-body .global-footer,
-  .info-body .site-bar {
+  .info-body .global-footer {
     display: none;
   }
 }
