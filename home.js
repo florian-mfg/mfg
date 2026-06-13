@@ -1,5 +1,5 @@
 const desktopLevels = [5, 4, 3, 2, 1];
-const mobileLevels = [3, 4, 5, 1, 2];
+const mobileLevels = [2, 1, 5, 4, 3];
 let scaleLevel = 0;
 let activeIntervals = new Map();
 
