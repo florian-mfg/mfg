@@ -22,7 +22,10 @@
       </header>
       <section class="project-media-grid" aria-label="SK images">
         <img class="project-media-grid__regular" src="projects/mfg-sk_1.jpg" alt="SK" loading="eager" />
-        <img class="project-media-grid__regular" src="projects/mfg-sk_2.jpg" alt="SK" loading="lazy" />
+        <div class="project-media-grid__video project-media-grid__video--regular">
+          <iframe src="https://player.vimeo.com/video/1201051389?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;muted=1&amp;loop=1&amp;controls=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="SK-Website"></iframe>
+          <button class="project-media-grid__video-toggle" type="button" aria-label="Start video" data-playing="false">Start</button>
+        </div>
         <img class="project-media-grid__regular" src="projects/mfg-sk_3.jpg" alt="SK" loading="lazy" />
         <div class="project-media-grid__module project-media-grid__module--front-right">
           <img class="project-media-grid__wide project-media-grid__module-wide" src="projects/mfg-sk_10_wide.jpg" alt="SK" loading="lazy" />
@@ -56,5 +59,33 @@
       </a>
       <a class="site-bar__link site-bar__link--right" href="info.html">Info</a>
     </nav>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+      const videoModule = document.querySelector(".project-media-grid__video");
+
+      if (videoModule && window.Vimeo) {
+        const iframe = videoModule.querySelector("iframe");
+        const toggle = videoModule.querySelector(".project-media-grid__video-toggle");
+        const player = new Vimeo.Player(iframe);
+
+        player.pause();
+
+        toggle.addEventListener("click", () => {
+          const isPlaying = toggle.dataset.playing === "true";
+
+          if (isPlaying) {
+            player.pause();
+            toggle.dataset.playing = "false";
+            toggle.textContent = "Start";
+            toggle.setAttribute("aria-label", "Start video");
+          } else {
+            player.play();
+            toggle.dataset.playing = "true";
+            toggle.textContent = "Stop";
+            toggle.setAttribute("aria-label", "Stop video");
+          }
+        });
+      }
+    </script>
   </body>
 </html>

@@ -403,6 +403,11 @@ body:not(.is-home) .site-bar__plus {
   background: #000;
 }
 
+.project-media-grid__video--regular {
+  grid-column: span 1;
+  aspect-ratio: 3 / 4;
+}
+
 .project-media-grid__video iframe {
   position: absolute;
   inset: 0;
