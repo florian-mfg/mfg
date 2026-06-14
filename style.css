@@ -150,6 +150,17 @@ button {
   filter: invert(1);
 }
 
+.info-body .site-bar:hover,
+.mfg-body .site-bar:hover {
+  background: #fff;
+  color: #000;
+}
+
+.info-body .site-bar:hover .site-bar__icon,
+.mfg-body .site-bar:hover .site-bar__icon {
+  filter: none;
+}
+
 .is-home .site-bar:hover {
   background: #fff;
   color: #000;
@@ -207,6 +218,19 @@ button {
 
 body:not(.is-home) .site-bar__plus {
   display: none;
+}
+
+@media (min-width: 701px) {
+  .is-home .site-bar,
+  .is-home .site-bar:hover {
+    background: #000;
+    color: #fff;
+  }
+
+  .is-home .site-bar .site-bar__icon,
+  .is-home .site-bar:hover .site-bar__icon {
+    filter: invert(1);
+  }
 }
 
 /* Shared content pages. */
