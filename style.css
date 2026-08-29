@@ -441,17 +441,26 @@ body:not(.is-home) .site-bar__plus {
   pointer-events: none;
 }
 
+.project-media-grid__video--cover iframe {
+  top: -16.666667%;
+  height: 133.333333%;
+}
+
 .project-media-grid__video-toggle {
   position: absolute;
   right: var(--page-margin);
   bottom: var(--page-margin);
   z-index: 1;
-  padding: 6px 10px;
-  border: 1px solid currentColor;
-  border-radius: 999px;
-  background: #000;
-  color: #fff;
-  line-height: 1;
+  width: 60px;
+  height: 59px;
+  padding: 0;
+  border: 0;
+  background: transparent url("assets/mfg-play-1.svg") center / contain no-repeat;
+  cursor: pointer;
+}
+
+.project-media-grid__video-toggle[data-playing="true"] {
+  background-image: url("assets/mfg-pause-1.svg");
 }
 
 .project-media-grid__module {

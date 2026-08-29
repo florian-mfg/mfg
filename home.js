@@ -9,6 +9,11 @@ let activeIntervals = new Map();
 */
 const projects = [
   {
+    page: "project-mfg-collective-memory.html",
+    title: "Collective Memory",
+    images: ["material/mfg-collective_memory-thumbnail-4.jpg", "material/mfg-collective_memory-thumbnail-2.jpg", "material/mfg-collective_memory-thumbnail-3.jpg"],
+  },
+   {
     page: "project-mfg-sk.html",
     title: "SKW",
     images: ["material/mfg-sk_1.jpg", "material/mfg-sk_2.jpg", "material/mfg-sk_3.jpg"],

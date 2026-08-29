@@ -23,7 +23,7 @@
       <section class="project-media-grid" aria-label="IMT images">
         <div class="project-media-grid__video">
           <iframe src="https://player.vimeo.com/video/1197141716?badge=0&amp;autopause=0&amp;muted=1&amp;loop=1&amp;controls=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="mfg-imprint_showcase-1"></iframe>
-          <button class="project-media-grid__video-toggle" type="button" aria-label="Start video" data-playing="false">Start</button>
+          <button class="project-media-grid__video-toggle" type="button" aria-label="Start video" data-playing="false"></button>
         </div>
         <img class="project-media-grid__regular" src="projects/mfg-imprint_1.jpg" alt="CM" loading="eager" />
         <img class="project-media-grid__regular" src="projects/mfg-imprint_5.jpg" alt="CM" loading="eager" />
@@ -71,13 +71,11 @@
           if (isPlaying) {
             player.pause();
             toggle.dataset.playing = "false";
-            toggle.textContent = "Start";
             toggle.setAttribute("aria-label", "Start video");
           } else {
             player.play();
             toggle.dataset.playing = "true";
-            toggle.textContent = "Stop";
-            toggle.setAttribute("aria-label", "Stop video");
+            toggle.setAttribute("aria-label", "Pause video");
           }
         });
       }

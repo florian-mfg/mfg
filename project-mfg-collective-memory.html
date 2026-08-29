@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="assets/mfg-favicon-2.jpg" type="image/jpeg" />
+    <link rel="shortcut icon" href="assets/mfg-favicon-2.jpg" type="image/jpeg" />
+    <link rel="apple-touch-icon" href="assets/mfg-favicon-2.jpg" />
+    <title>Collective Memory - MfG</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="project-body">
+    <article class="page project-page">
+      <header class="project-page__intro">
+        <div>
+          <h1 class="project-page__title">CM</h1>
+          <div>Collective Memeory</div>
+          <br>
+          <div><a href="https://collective-memory.de" target="_blank" rel="noopener noreferrer">https://collective-memory.de</a></div>
+        </div>
+        <p class="project-page__description">Collective Memory explores the role of influence, appropriation, and transformation in graphic design through typographic fragments extracted from existing visual material, making visible the references and inspirations embedded within every work. Through copying, isolating, and recombining these fragments, information is transformed and reinterpreted. Rather than presenting design as an autonomous creation, every work is understood as part of an ongoing process that remains connected to what came before and open to what follows. The project itself becomes a visible network of references, traces, and shared cultural memory, symbolizing the interconnected processes through which design is continuously shaped and reshaped.</p>
+      </header>
+
+      <section class="project-media-grid" aria-label="SK images">
+        <img class="project-media-grid__regular" src="projects/mfg-collective_memory-1.jpg" alt="SK" loading="eager" />
+        <div class="project-media-grid__video project-media-grid__video--regular">
+          <iframe src="https://player.vimeo.com/video/1222314733?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;muted=1&amp;loop=1&amp;controls=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="mfg-collective_memory-Video-2"></iframe>
+          <button class="project-media-grid__video-toggle" type="button" aria-label="Start video" data-playing="false"></button>
+        </div>
+         <div class="project-media-grid__video project-media-grid__video--regular">
+          <iframe src="https://player.vimeo.com/video/1222314976?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;muted=1&amp;loop=1&amp;controls=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="mfg-collective_memory-Video-1"></iframe>
+          <button class="project-media-grid__video-toggle" type="button" aria-label="Start video" data-playing="false"></button>
+        </div>
+
+        <div class="project-media-grid__module project-media-grid__module--front-right">
+          <img class="project-media-grid__regular project-media-grid__module-front" src="projects/mfg-collective_memory-4.jpg" alt="SK" loading="lazy" />
+        <img class="project-media-grid__wide project-media-grid__module-wide" src="projects/mfg-collective_memory-6-wide.jpg" alt="SK" loading="lazy" />
+        </div>
+        
+       <div class="project-media-grid__module project-media-grid__module--front-right">    
+        <div class="project-media-grid__video project-media-grid__video--regular project-media-grid__video--cover">
+          <iframe src="https://player.vimeo.com/video/1222315208?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;muted=1&amp;loop=1&amp;controls=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="mfg-collective_memory-Video-5"></iframe>
+          <button class="project-media-grid__video-toggle" type="button" aria-label="Start video" data-playing="false"></button>
+        </div>  
+            <img class="project-media-grid__wide project-media-grid__module-wide" src="projects/mfg-collective_memory-7-wide.jpg" alt="SK" loading="lazy" />
+        </div>
+      </section>
+    </article>
+    <footer class="global-footer" aria-label="Footer">
+      <span>MFG Meisner Florian Gestaltung</span>
+      <a href="mailto:info@meisnerfloriangestaltung.com">MAIL info@meisnerfloriangestaltung.com</a>
+      <a href="https://www.instagram.com/meisnerfloriangestaltung" target="_blank" rel="noopener noreferrer">INSTAGRAM @meisnerfloriangestaltung</a>
+      <a href="privacy-policy.html">PRIVACY POLICY</a>
+      <a href="imprint.html">IMPRINT</a>
+    </footer>
+    <nav class="site-bar" aria-label="Site navigation">
+      <a class="site-bar__link" href="mfg.html">MfG</a>
+      <a class="site-bar__scale" href="index.html" aria-label="Close page">
+        <img class="site-bar__icon site-bar__close" src="assets/mfg-mal.svg" alt="" aria-hidden="true" />
+      </a>
+      <a class="site-bar__link site-bar__link--right" href="info.html">Info</a>
+    </nav>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+      if (window.Vimeo) {
+        document.querySelectorAll(".project-media-grid__video").forEach((videoModule) => {
+          const iframe = videoModule.querySelector("iframe");
+          const toggle = videoModule.querySelector(".project-media-grid__video-toggle");
+          const player = new Vimeo.Player(iframe);
+
+          player.pause();
+
+          toggle.addEventListener("click", () => {
+            const isPlaying = toggle.dataset.playing === "true";
+
+            if (isPlaying) {
+              player.pause();
+              toggle.dataset.playing = "false";
+              toggle.setAttribute("aria-label", "Start video");
+            } else {
+              player.play();
+              toggle.dataset.playing = "true";
+              toggle.setAttribute("aria-label", "Pause video");
+            }
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
