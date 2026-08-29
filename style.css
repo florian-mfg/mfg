@@ -10,7 +10,7 @@
 :root {
   --bar-height: 41px;
   --page-margin: 12px;
-  --columns: 5;
+  --columns: 4;
   --text-size: clamp(14px, 1.05vw, 18px);
 }
 
