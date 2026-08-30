@@ -3,8 +3,51 @@ const ringSources = [stage.dataset.ringOne, stage.dataset.ringTwo];
 const rings = [];
 let nextRingId = 0;
 const ignoredCollisionPairs = new Set();
-const desktopMaxRings = 16;
+const desktopMaxRings = 12;
 const mobileMaxRings = 8;
+const focusToggle = document.querySelector(".info-focus-toggle");
+
+if (focusToggle) {
+  const mobileFocus = window.matchMedia("(max-width: 700px)");
+  const showAnimationOnly = () => {
+    document.body.classList.add("is-animation-focused");
+    focusToggle.setAttribute("aria-pressed", "true");
+  };
+  const showDefaultView = () => {
+    document.body.classList.remove("is-animation-focused");
+    focusToggle.setAttribute("aria-pressed", "false");
+  };
+
+  focusToggle.addEventListener("mouseenter", () => {
+    if (!mobileFocus.matches) showAnimationOnly();
+  });
+  focusToggle.addEventListener("mouseleave", () => {
+    if (!mobileFocus.matches) showDefaultView();
+  });
+  focusToggle.addEventListener("focus", () => {
+    if (!mobileFocus.matches) showAnimationOnly();
+  });
+  focusToggle.addEventListener("blur", () => {
+    if (!mobileFocus.matches) showDefaultView();
+  });
+  focusToggle.addEventListener("click", (event) => {
+    if (!mobileFocus.matches) return;
+
+    event.stopPropagation();
+    if (document.body.classList.contains("is-animation-focused")) {
+      showDefaultView();
+      focusToggle.blur();
+    } else {
+      showAnimationOnly();
+    }
+  });
+  document.addEventListener("click", () => {
+    if (mobileFocus.matches && document.body.classList.contains("is-animation-focused")) {
+      showDefaultView();
+      focusToggle.blur();
+    }
+  });
+}
 
 function randomBetween(min, max) {
   return min + Math.random() * (max - min);
@@ -26,14 +69,9 @@ function pruneRings() {
 }
 
 function bounds() {
-  const bar = document.querySelector(".site-bar");
-  const stageRect = stage.getBoundingClientRect();
-  const barRect = bar ? bar.getBoundingClientRect() : null;
-  const barTop = barRect && barRect.top > stageRect.top ? barRect.top - stageRect.top : stage.clientHeight;
-
   return {
     width: stage.clientWidth,
-    height: Math.max(Math.min(stage.clientHeight, barTop), 120),
+    height: stage.clientHeight,
   };
 }
 

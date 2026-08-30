@@ -20,11 +20,7 @@ if (siteBar) {
       siteBar.style.setProperty("--page-end-arrow-top", `${projectPage.offsetTop + projectPage.offsetHeight}px`);
     }
 
-    if (isAtPageEnd) {
-      siteBar.classList.remove("is-hidden");
-      distanceInDirection = 0;
-      lastDirection = 0;
-    } else if (currentScrollY === 0) {
+    if (currentScrollY === 0) {
       siteBar.classList.remove("is-hidden");
       distanceInDirection = 0;
       lastDirection = 0;

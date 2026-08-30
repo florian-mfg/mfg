@@ -250,9 +250,18 @@ button {
   color: #000;
 }
 
+.info-body .site-bar,
+.info-body .site-bar:hover {
+  background: transparent;
+}
+
 .project-body .site-bar.is-hidden,
 .info-body .site-bar.is-hidden {
   transform: translateY(100%);
+}
+
+.site-bar.is-hidden {
+  display: none;
 }
 
 .project-back {
@@ -266,7 +275,6 @@ button {
 .project-back__icon {
   width: 100%;
   height: auto;
-  transition: filter 180ms ease;
 }
 
 .project-body .site-bar.is-at-page-end {
@@ -396,13 +404,50 @@ body:not(.is-home) .site-bar__plus {
 
 .info-page .info-page__rings-stage {
   position: fixed;
+  top: 0;
+  left: 0;
   z-index: 0;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
 }
 
 .info-page > section {
   position: relative;
   z-index: 1;
+  transition: opacity 160ms linear;
+}
+
+.info-focus-toggle {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 40;
+  padding: 8px 8px 0 10px;
+  color: #000;
+  font-size: 2em;
+  line-height: 1;
+  transition: opacity 160ms linear;
+}
+
+.info-focus-toggle::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 72px;
+  height: 72px;
+  content: "";
+}
+
+.info-body.is-animation-focused .info-page > section,
+.info-body.is-animation-focused .site-bar,
+.info-body.is-animation-focused .info-focus-toggle {
+  opacity: 0;
+}
+
+.info-body.is-animation-focused .info-page > section,
+.info-body.is-animation-focused .site-bar {
+  pointer-events: none;
 }
 
 .info-block {
@@ -429,6 +474,11 @@ body:not(.is-home) .site-bar__plus {
 
 .info-block__title {
   margin-bottom: 0;
+}
+
+.info-page__contact-link:hover,
+.info-page__contact-link:focus-visible {
+  color: rgb(0, 0, 255);
 }
 
 .info-block--cv .info-block__title,
@@ -691,6 +741,10 @@ body:not(.is-home) .site-bar__plus {
     --bar-height: 38px;
     --page-margin: 10px;
     --text-size: 16px;
+  }
+
+  .info-focus-toggle {
+    padding-top: 5px;
   }
 
   .is-home .site-bar {
