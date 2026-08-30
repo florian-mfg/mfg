@@ -9,8 +9,13 @@ let activeIntervals = new Map();
 */
 const projects = [
   {
+    page: "project-mfg-anisotropy.html",
+    title: "AOR",
+    images: ["material/mfg-anisotropy-thumbnail-1.jpg", "material/mfg-anisotropy-thumbnail-2.jpg", "material/mfg-anisotropy-thumbnail-3.jpg"],
+  },
+  {
     page: "project-mfg-collective-memory.html",
-    title: "Collective Memory",
+    title: "CM",
     images: ["material/mfg-collective_memory-thumbnail-4.jpg", "material/mfg-collective_memory-thumbnail-2.jpg", "material/mfg-collective_memory-thumbnail-3.jpg"],
   },
    {
@@ -31,7 +36,7 @@ const projects = [
   },
   {
     page: "project-mfg-riff.html",
-    title: "Riff",
+    title: "RFF",
     images: ["material/mfg_riff_1.jpg", "material/mfg_riff_2.jpg", "material/mfg_riff_3.jpg"],
   },
   {
@@ -68,13 +73,13 @@ const projects = [
   },
   {
     page: "project-mfg-freiheit-weniger.html",
-    title: "Freiheit Weniger",
+    title: "FWE",
     images: ["material/mfg_freiheit_weniger_1.jpg", "material/mfg_freiheit_weniger_2.jpg", "material/mfg_freiheit_weniger_3.jpg"],
   },
  
   {
     page: "project-mfg-aufdersuche.html",
-    title: "Auf der Suche",
+    title: "ADS",
     images: ["material/mfg_aufdersuche_1.jpg", "material/mfg_aufdersuche_2.jpg", "material/mfg_aufdersuche_3.jpg"],
   },
   
@@ -85,12 +90,12 @@ const projects = [
   },
   {
     page: "project-mfg-tisch.html",
-    title: "Tisch",
+    title: "T",
     images: ["material/mfg_tisch_1.jpg", "material/mfg_tisch_2.jpg", "material/mfg_tisch_3.jpg"],
   },
   {
     page: "project-mfg-orlandiposter.html",
-    title: "Orlandi Poster",
+    title: "OMP",
     images: ["material/mfg_orlandiposter_1.jpg", "material/mfg_orlandiposter_2.jpg", "material/mfg_orlandiposter_3.jpg"],
   },
   
@@ -98,24 +103,24 @@ const projects = [
   
   {
     page: "project-mfg-tramtram.html",
-    title: "Tramtram",
+    title: "TTT",
     images: ["material/mfg_tramtram_1.jpg", "material/mfg_tramtram_2.jpg", "material/mfg_tramtram_3.jpg"],
   },
  {
     page: "project-mfg-stream.html",
-    title: "Stream",
+    title: "STW",
     images: ["material/mfg_stream_1.jpg", "material/mfg_stream_2.jpg", "material/mfg_stream_3.jpg"],
   },
   {
     page: "project-mfg-orlandimono.html",
-    title: "Orlandi Mono",
+    title: "OMT",
     images: ["material/mfg_orlandimono_1.jpg", "material/mfg_orlandimono_2.jpg", "material/mfg_orlandimono_3.jpg"],
   },
  
    
   {
     page: "project-mfg-riff-concept.html",
-    title: "Riff Concept",
+    title: "RFC",
     images: ["material/mfg_riff_concept_1.jpg", "material/mfg_riff_concept_2.jpg", "material/mfg_riff_concept_3.jpg"],
   },
   
@@ -126,14 +131,14 @@ const projects = [
   },
   {
     page: "project-mfg-nextsteps.html",
-    title: "Next Steps",
+    title: "NSW",
     images: ["material/mfg_nextsteps_1.jpg", "material/mfg_nextsteps_2.jpg", "material/mfg_nextsteps_3.jpg"],
   },
   
   
   {
     page: "project-mfg-mfg-portfolio.html",
-    title: "MFG Portfolio",
+    title: "MFG",
     images: ["material/mfg_mfg_portfolio_1.jpg", "material/mfg_mfg_portfolio_2.jpg", "material/mfg_mfg_portfolio_3.jpg"],
   },
   
@@ -147,14 +152,14 @@ const projects = [
   
   {
     page: "project-mfg-blu.html",
-    title: "Blu",
+    title: "BLU",
     images: ["material/mfg_blu_1.jpg", "material/mfg_blu_2.jpg", "material/mfg_blu_3.jpg"],
   },
   
   
   {
     page: "project-mfg-stabitype.html",
-    title: "Stabitype",
+    title: "STT",
     images: ["material/mfg_stabitype_1.jpg", "material/mfg_stabitype_2.jpg", "material/mfg_stabitype_3.jpg"],
   },
   
