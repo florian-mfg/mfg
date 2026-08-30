@@ -8,9 +8,17 @@
     <link rel="apple-touch-icon" href="assets/mfg-favicon-2.jpg" />
     <title>Info - MfG</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="site-bar.js" defer></script>
   </head>
   <body class="light-menu info-body">
     <main class="page page--white info-page">
+      <div
+        id="rings-stage"
+        class="rings-page__stage info-page__rings-stage"
+        data-ring-one="assets/mfg-ring-1.svg"
+        data-ring-two="assets/mfg-ring-2.svg"
+        aria-hidden="true"
+      ></div>
       <section class="info-page__details" aria-label="Studio details">
         <div class="info-block info-block--intro">
           <div>MfG</div>
@@ -66,20 +74,11 @@
       </section> -->
     </main>
 
-    <footer class="global-footer global-footer--white" aria-label="Footer">
-      <span>MFG Meisner Florian Gestaltung</span>
-      <a href="mailto:info@meisnerfloriangestaltung.com">MAIL info@meisnerfloriangestaltung.com</a>
-      <a href="https://www.instagram.com/meisnerfloriangestaltung" target="_blank" rel="noopener noreferrer">INSTAGRAM @meisnerfloriangestaltung</a>
-      <a href="privacy-policy.html">PRIVACY POLICY</a>
-      <a href="imprint.html">IMPRINT</a>
-    </footer>
-
-    <nav class="site-bar" aria-label="Site navigation">
-      <a class="site-bar__link" href="mfg.html">MfG</a>
-      <a class="site-bar__scale" href="index.html" aria-label="Close page">
-        <img class="site-bar__icon site-bar__close" src="assets/mfg-mal.svg" alt="" aria-hidden="true" />
+    <nav class="site-bar project-back-bar" aria-label="Info navigation">
+      <a class="project-back" href="index.html" aria-label="Back to homepage">
+        <img class="project-back__icon" src="assets/mfg-arrow-back-1.svg" alt="" aria-hidden="true" />
       </a>
-      <a class="site-bar__link site-bar__link--right" href="info.html">Info</a>
     </nav>
+    <script src="rings.js"></script>
   </body>
 </html>

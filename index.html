@@ -23,24 +23,29 @@
     <link rel="apple-touch-icon" href="assets/mfg-favicon-2.jpg" />
     <title>MfG Meisner Florian Gestaltung</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="site-bar.js" defer></script>
   </head>
   <body class="is-home">
     <main aria-label="Project overview">
       <section id="project-grid" class="project-grid"></section>
       <footer class="global-footer" aria-label="Footer">
-        <span>MFG Meisner Florian Gestaltung</span>
-        <a href="mailto:info@meisnerfloriangestaltung.com">MAIL info@meisnerfloriangestaltung.com</a>
-        <a href="https://www.instagram.com/meisnerfloriangestaltung" target="_blank" rel="noopener noreferrer">INSTAGRAM @meisnerfloriangestaltung</a>
-        <a href="privacy-policy.html">PRIVACY POLICY</a>
-        <a href="imprint.html">IMPRINT</a>
+        <span>MfG</span>
+        <div class="global-footer__links">
+          <a href="mailto:info@meisnerfloriangestaltung.com">Mail</a>
+          <a href="https://www.instagram.com/meisnerfloriangestaltung" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="imprint.html">Imprint</a>
+        </div>
       </footer>
     </main>
 
     <nav class="site-bar" aria-label="Site navigation">
-      <a class="site-bar__link" href="mfg.html">MfG</a>
-      <button id="scale-button" class="site-bar__scale" type="button" aria-label="Scale project grid">
-        <img class="site-bar__icon site-bar__plus" src="assets/mfg-plus.svg" alt="" aria-hidden="true" />
-        <img class="site-bar__icon site-bar__close" src="assets/mfg-mal.svg" alt="" aria-hidden="true" />
+      <span class="site-bar__link site-bar__brand">
+        <span class="site-bar__brand-short">MfG</span>
+        <span class="site-bar__brand-full">Meisner Florian Gestaltung</span>
+      </span>
+      <button id="scale-button" class="site-bar__scale" type="button" aria-label="Change project size">
+        <span id="scale-label" aria-hidden="true">S</span>
       </button>
       <a class="site-bar__link site-bar__link--right" href="info.html">Info</a>
     </nav>

@@ -1,6 +1,7 @@
-const desktopLevels = [4, 3, 2, 1, 5];
-const mobileLevels = [2, 1, 5, 4, 3];
-let scaleLevel = 0;
+const desktopLevels = [5, 4, 3];
+const mobileLevels = [3, 2, 1];
+const scaleLabels = ["S", "M", "L"];
+let scaleLevel = window.matchMedia("(max-width: 700px)").matches ? 1 : 0;
 let activeIntervals = new Map();
 
 /*
@@ -172,6 +173,7 @@ const projects = [
 
 const grid = document.querySelector("#project-grid");
 const scaleButton = document.querySelector("#scale-button");
+const scaleLabel = document.querySelector("#scale-label");
 
 function renderHomeGrid() {
   grid.innerHTML = projects
@@ -241,6 +243,11 @@ function setupHoverCycling() {
 function updateScale() {
   document.documentElement.style.setProperty("--columns", desktopLevels[scaleLevel]);
   document.documentElement.style.setProperty("--mobile-columns", mobileLevels[scaleLevel]);
+
+  const label = scaleLabels[scaleLevel];
+
+  scaleLabel.textContent = label;
+  scaleButton.setAttribute("aria-label", `Project size ${label}. Change to next size.`);
 }
 
 scaleButton.addEventListener("click", () => {
