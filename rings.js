@@ -6,6 +6,10 @@ const ignoredCollisionPairs = new Set();
 const desktopMaxRings = 12;
 const mobileMaxRings = 8;
 const focusToggle = document.querySelector(".info-focus-toggle");
+const physicsStep = 1000 / 60;
+const maxFrameTime = physicsStep * 6;
+let lastFrameTime = null;
+let accumulatedTime = 0;
 
 if (focusToggle) {
   const mobileFocus = window.matchMedia("(max-width: 700px)");
@@ -210,7 +214,7 @@ function keepRingInBounds(ring, area) {
   ring.wasTouchingBorder = touchedBorder;
 }
 
-function moveRings(now) {
+function updateRings() {
   pruneRings();
 
   const area = bounds();
@@ -220,21 +224,41 @@ function moveRings(now) {
     ring.x += ring.vx;
     ring.y += ring.vy;
     keepRingInBounds(ring, area);
-    ring.element.style.transform = `translate(${ring.x}px, ${ring.y}px)`;
   });
 
   bounceTouchingRings();
 
   rings.forEach((ring) => {
     keepRingInBounds(ring, area);
+  });
+}
+
+function renderRings() {
+  rings.forEach((ring) => {
     ring.element.style.transform = `translate(${ring.x}px, ${ring.y}px)`;
   });
+}
+
+function moveRings(now) {
+  if (lastFrameTime === null) lastFrameTime = now;
+
+  accumulatedTime += Math.min(now - lastFrameTime, maxFrameTime);
+  lastFrameTime = now;
+
+  while (accumulatedTime >= physicsStep) {
+    updateRings();
+    accumulatedTime -= physicsStep;
+  }
+
+  renderRings();
 
   requestAnimationFrame(moveRings);
 }
 
 function startRings() {
   resetRings();
+  lastFrameTime = null;
+  accumulatedTime = 0;
   requestAnimationFrame(moveRings);
 }
 
@@ -250,5 +274,10 @@ function resetRings() {
   addRing(0, Math.min(area.width * 0.18, area.width - size), Math.min(area.height * 0.28, area.height - size), 0.82, 0.58);
   addRing(1, Math.min(area.width * 0.68, area.width - size), Math.min(area.height * 0.2, area.height - size), -0.62, 0.74);
 }
+
+document.addEventListener("visibilitychange", () => {
+  lastFrameTime = null;
+  accumulatedTime = 0;
+});
 
 startRings();

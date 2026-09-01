@@ -283,6 +283,8 @@ button {
   bottom: auto;
   align-items: flex-start;
   background: transparent;
+  display: flex;
+  transform: none;
 }
 
 .project-body .site-bar.is-at-page-end .project-back__icon {
@@ -424,11 +426,16 @@ body:not(.is-home) .site-bar__plus {
   top: 0;
   right: 0;
   z-index: 40;
-  padding: 8px 8px 0 10px;
+  padding: 14px 12px 0 10px;
   color: #000;
   font-size: 2em;
   line-height: 1;
   transition: opacity 160ms linear;
+}
+
+.info-focus-toggle img {
+  width: 28px;
+  height: auto;
 }
 
 .info-focus-toggle::before {
@@ -752,7 +759,7 @@ body:not(.is-home) .site-bar__plus {
   }
 
   .info-focus-toggle {
-    padding-top: 5px;
+    padding-top: 11px;
   }
 
   .is-home .site-bar {
