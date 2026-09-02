@@ -20,14 +20,21 @@
         <p class="project-page__description">Riff is a community hub based on mutual support and a creative response to a daily life dominated by work and characterised by increasing alienation. The concept creates spaces for social interaction, exchange and shared experiences that can be replicated across the country. As an open, non-commercial space, Riff fosters an egalitarian atmosphere, acceptance and personal development. At the heart of the concept is the skills exchange market, where people share their knowledge, hobbies and interests with one another on a mutual basis, beyond formal hierarchies. A minimalist, inclusive corporate design lowers barriers to entry and encourages participation. This creates a *Second Everyday Life* that strengthens community and rethinks social cohesion.</p>
       </header>
       <section class="project-media-grid" aria-label="Riff images">
-        <img class="project-media-grid__regular" src="projects/mfg-riff_1.jpg" alt="Riff" loading="eager" />
-        <img class="project-media-grid__regular" src="projects/mfg-riff_2.jpg" alt="Riff" loading="lazy" />
-        <img class="project-media-grid__regular" src="projects/mfg-riff_3.jpg" alt="Riff" loading="lazy" />
+        <img class="project-media-grid__regular" src="projects/mfg-riff_1.jpg" alt="SK" loading="eager" />
+        <div class="project-media-grid__video project-media-grid__video--regular project-media-grid__video--white">
+          <iframe src="https://player.vimeo.com/video/1223435863?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;muted=1&amp;loop=1&amp;controls=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Riff-Mobile-speed-2"></iframe>
+          <button class="project-media-grid__video-toggle" type="button" aria-label="Start video" data-playing="false"></button>
+        </div>
+        <img class="project-media-grid__regular" src="projects/mfg-riff_3.jpg" alt="SK" loading="lazy" />
         <div class="project-media-grid__module project-media-grid__module--full">
           <img class="project-media-grid__full" src="projects/mfg-riff_21-full_width.jpg" alt="CM" loading="lazy" />
         </div>
-        <img class="project-media-grid__regular" src="projects/mfg-riff_7.jpg" alt="Riff" loading="lazy" />
-        <img class="project-media-grid__regular" src="projects/mfg-riff_8.jpg" alt="Riff" loading="lazy" />
+        <img class="project-media-grid__regular" src="projects/mfg-riff_7.jpg" alt="SK" loading="eager" />
+        <div class="project-media-grid__video project-media-grid__video--regular project-media-grid__video--white">
+          <iframe src="https://player.vimeo.com/video/1223440130?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;muted=1&amp;loop=1&amp;controls=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Riff-Plakat-1"></iframe>
+          <button class="project-media-grid__video-toggle" type="button" aria-label="Start video" data-playing="false"></button>
+        </div>
+
         <img class="project-media-grid__regular" src="projects/mfg-riff_9.jpg" alt="Riff" loading="lazy" />
         <img class="project-media-grid__regular" src="projects/mfg-riff_10.jpg" alt="Riff" loading="lazy" />
         <img class="project-media-grid__regular" src="projects/mfg-riff_11.jpg" alt="Riff" loading="lazy" />
@@ -39,7 +46,10 @@
         <img class="project-media-grid__regular" src="projects/mfg-riff_17.jpg" alt="Riff" loading="lazy" />
         <img class="project-media-grid__regular" src="projects/mfg-riff_18.jpg" alt="Riff" loading="lazy" />    
         <div class="project-media-grid__module project-media-grid__module--front-left">
-          <img class="project-media-grid__wide project-media-grid__module-wide" src="projects/mfg-riff_19_wide.jpg" alt="Riff" loading="lazy" />
+          <div class="project-media-grid__video project-media-grid__video--wide project-media-grid__module-wide">
+            <iframe src="https://player.vimeo.com/video/1223437849?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;muted=1&amp;loop=1&amp;controls=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Riff-Poster-subway-1"></iframe>
+            <button class="project-media-grid__video-toggle" type="button" aria-label="Start video" data-playing="false"></button>
+          </div>
           <img class="project-media-grid__regular project-media-grid__module-front" src="projects/mfg-riff_20.jpg" alt="Riff" loading="lazy" />
         </div>
       </section>
@@ -58,5 +68,31 @@
         <img class="project-back__icon" src="assets/mfg-arrow-back-1.svg" alt="" aria-hidden="true" />
       </a>
     </nav>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+      if (window.Vimeo) {
+        document.querySelectorAll(".project-media-grid__video").forEach((videoModule) => {
+          const iframe = videoModule.querySelector("iframe");
+          const toggle = videoModule.querySelector(".project-media-grid__video-toggle");
+          const player = new Vimeo.Player(iframe);
+
+          player.pause();
+
+          toggle.addEventListener("click", () => {
+            const isPlaying = toggle.dataset.playing === "true";
+
+            if (isPlaying) {
+              player.pause();
+              toggle.dataset.playing = "false";
+              toggle.setAttribute("aria-label", "Start video");
+            } else {
+              player.play();
+              toggle.dataset.playing = "true";
+              toggle.setAttribute("aria-label", "Pause video");
+            }
+          });
+        });
+      }
+    </script>
   </body>
 </html>

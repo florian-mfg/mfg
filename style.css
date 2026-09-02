@@ -641,6 +641,14 @@ body:not(.is-home) .site-bar__plus {
   aspect-ratio: 3 / 4;
 }
 
+.project-media-grid__video--wide {
+  aspect-ratio: 3 / 2;
+}
+
+.project-media-grid__video--white {
+  background: #fff;
+}
+
 .project-media-grid__video iframe {
   position: absolute;
   inset: 0;
