@@ -44,9 +44,11 @@
         <span class="site-bar__brand-short">MfG</span>
         <span class="site-bar__brand-full">Meisner Florian Gestaltung</span>
       </span>
-      <button id="scale-button" class="site-bar__scale" type="button" aria-label="Change project size">
-        <span id="scale-label" aria-hidden="true">S</span>
-      </button>
+      <div class="site-bar__scale" role="group" aria-label="Project size">
+        <button class="site-bar__scale-option" type="button" data-scale="0" aria-label="Small projects" aria-pressed="true">S</button>
+        <button class="site-bar__scale-option" type="button" data-scale="1" aria-label="Medium projects" aria-pressed="false">M</button>
+        <button class="site-bar__scale-option" type="button" data-scale="2" aria-label="Large projects" aria-pressed="false">L</button>
+      </div>
       <a class="site-bar__link site-bar__link--right" href="info.html">Info</a>
     </nav>
 

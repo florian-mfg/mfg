@@ -1,6 +1,5 @@
 const desktopLevels = [5, 4, 3];
 const mobileLevels = [3, 2, 1];
-const scaleLabels = ["S", "M", "L"];
 let scaleLevel = window.matchMedia("(max-width: 700px)").matches ? 1 : 0;
 let activeIntervals = new Map();
 
@@ -172,8 +171,7 @@ const projects = [
 ];
 
 const grid = document.querySelector("#project-grid");
-const scaleButton = document.querySelector("#scale-button");
-const scaleLabel = document.querySelector("#scale-label");
+const scaleButtons = Array.from(document.querySelectorAll(".site-bar__scale-option"));
 
 function renderHomeGrid() {
   grid.innerHTML = projects
@@ -244,15 +242,18 @@ function updateScale() {
   document.documentElement.style.setProperty("--columns", desktopLevels[scaleLevel]);
   document.documentElement.style.setProperty("--mobile-columns", mobileLevels[scaleLevel]);
 
-  const label = scaleLabels[scaleLevel];
-
-  scaleLabel.textContent = label;
-  scaleButton.setAttribute("aria-label", `Project size ${label}. Change to next size.`);
+  scaleButtons.forEach((button, index) => {
+    const isSelected = index === scaleLevel;
+    button.classList.toggle("is-selected", isSelected);
+    button.setAttribute("aria-pressed", String(isSelected));
+  });
 }
 
-scaleButton.addEventListener("click", () => {
-  scaleLevel = (scaleLevel + 1) % desktopLevels.length;
-  updateScale();
+scaleButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    scaleLevel = Number(button.dataset.scale);
+    updateScale();
+  });
 });
 
 renderHomeGrid();
