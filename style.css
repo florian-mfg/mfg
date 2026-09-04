@@ -793,7 +793,7 @@ body:not(.is-home) .site-bar__plus {
   .is-home .site-bar__link {
     width: auto;
     height: auto;
-    padding-top: 5px;
+    padding-top: 7px;
     padding-bottom: 0;
   }
 
