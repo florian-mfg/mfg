@@ -14,15 +14,43 @@
     <article class="page project-page">
       <header class="project-page__intro">
         <div>
-          <h1 class="project-page__title">Orlandi Mono</h1>
-          <div>Project</div>
+          <h1 class="project-page__title">MfG</h1>
+          <h1 class="project-page__title">OMT</h1>
+          <h1 class="project-page__title">Orlandi Mono Typeface</h1>
         </div>
-        <p class="project-page__description">🚧 Orlandi Mono 🚧</p>
+        <p class="project-page__description">Orlandi Mono is a typeface inspired by documents I found in a documentary about the disappearance of the girl Emanuela Orlandi in the Vatican from 1985. In combination with the aim of creating a typeface with a very high x-height and a short descenders, I drafted Orlandi. A monotype intended for large applications such as posters or headlines.
+</p>
       </header>
       <section class="project-media-grid" aria-label="Orlandi Mono images">
-        <img src="material/mfg_orlandimono_1.jpg" alt="Orlandi Mono" loading="eager" />
-        <img src="material/mfg_orlandimono_2.jpg" alt="Orlandi Mono" loading="lazy" />
-        <img src="material/mfg_orlandimono_3.jpg" alt="Orlandi Mono" loading="lazy" />
+        <div class="project-media-grid__video">
+          <iframe src="https://player.vimeo.com/video/1224852709?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;muted=1&amp;loop=1&amp;controls=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="OrlandiMono-Animation-1"></iframe>
+          <button class="project-media-grid__video-toggle" type="button" aria-label="Start video" data-playing="false"></button>
+        </div>
+        <img class="project-media-grid__regular" src="projects/mfg-orlandi_mono-1.jpg" alt="Orlandi Mono" loading="eager" />
+        <img class="project-media-grid__regular" src="projects/mfg-orlandi_mono-2.jpg" alt="Orlandi Mono" loading="lazy" />
+        <div class="project-media-grid__video project-media-grid__video--regular">
+          <iframe src="https://player.vimeo.com/video/1224852411?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;muted=1&amp;loop=1&amp;controls=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="OrlandiMono-Animation-2"></iframe>
+          <button class="project-media-grid__video-toggle" type="button" aria-label="Start video" data-playing="false"></button>
+        </div>
+        <div class="project-media-grid__module project-media-grid__module--front-left">
+          <img class="project-media-grid__regular project-media-grid__module-front" src="projects/mfg-orlandi_mono-4.jpg" alt="Orlandi Mono" loading="lazy" />
+          <img class="project-media-grid__wide project-media-grid__module-wide" src="projects/mfg-orlandi_mono-5-wide.jpg" alt="Orlandi Mono" loading="lazy" />
+        </div>
+        <img src="projects/mfg-orlandi_mono-14.jpg" alt="Orlandi Mono" loading="eager" />
+        <img src="projects/mfg-orlandi_mono-15.jpg" alt="Orlandi Mono" loading="lazy" />
+        <img src="projects/mfg-orlandi_mono-16.jpg" alt="Orlandi Mono" loading="lazy" />
+        <div class="project-media-grid__module project-media-grid__module--full">
+          <img class="project-media-grid__full" src="projects/mfg-orlandi_mono-6-fullwidth.jpg" alt="CM" loading="lazy" />
+        </div>
+        <div class="project-media-grid__module project-media-grid__module--full">
+          <img class="project-media-grid__full" src="projects/mfg-orlandi_mono-7-fullwidth.jpg" alt="CM" loading="lazy" />
+        </div>
+        <img src="projects/mfg-orlandi_mono-11.jpg" alt="Orlandi Mono" loading="eager" />
+        <img src="projects/mfg-orlandi_mono-12.jpg" alt="Orlandi Mono" loading="lazy" />
+        <img src="projects/mfg-orlandi_mono-13.jpg" alt="Orlandi Mono" loading="lazy" />
+        <div class="project-media-grid__module project-media-grid__module--full">
+          <img class="project-media-grid__full" src="projects/mfg-orlandi_mono-10-fullwidth.jpg" alt="CM" loading="lazy" />
+        </div>
       </section>
     </article>
     <footer class="global-footer" aria-label="Footer">
@@ -39,5 +67,31 @@
         <img class="project-back__icon" src="assets/mfg-arrow-back-1.svg" alt="" aria-hidden="true" />
       </a>
     </nav>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+      if (window.Vimeo) {
+        document.querySelectorAll(".project-media-grid__video").forEach((videoModule) => {
+          const iframe = videoModule.querySelector("iframe");
+          const toggle = videoModule.querySelector(".project-media-grid__video-toggle");
+          const player = new Vimeo.Player(iframe);
+
+          player.pause();
+
+          toggle.addEventListener("click", () => {
+            const isPlaying = toggle.dataset.playing === "true";
+
+            if (isPlaying) {
+              player.pause();
+              toggle.dataset.playing = "false";
+              toggle.setAttribute("aria-label", "Start video");
+            } else {
+              player.play();
+              toggle.dataset.playing = "true";
+              toggle.setAttribute("aria-label", "Pause video");
+            }
+          });
+        });
+      }
+    </script>
   </body>
 </html>

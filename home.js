@@ -60,12 +60,16 @@ const projects = [
     images: ["material/mfg_candleholder_1.jpg", "material/mfg_candleholder_2.jpg", "material/mfg_candleholder_3.jpg"],
   },
   {
+    page: "project-mfg-orlandimono.html",
+    title: "OMT",
+    images: ["projects/mfg-orlandi_mono-1.jpg", "projects/mfg-orlandi_mono-2.jpg", "projects/mfg-orlandi_mono-3.jpg"],
+  },
+  {
     page: "project-mfg-cm.html",
     title: "CMI",
     images: ["material/mfg_cm_4.jpg", "material/mfg_cm_5.jpg", "material/mfg_cm_6.jpg"],
   },
-  
-  
+    
   {
     page: "project-mfg-fred.html",
     title: "FIP",
@@ -96,7 +100,7 @@ const projects = [
   {
     page: "project-mfg-orlandiposter.html",
     title: "OMP",
-    images: ["material/mfg_orlandiposter_1.jpg", "material/mfg_orlandiposter_2.jpg", "material/mfg_orlandiposter_3.jpg"],
+    images: ["material/mfg_orlandiposter_1.jpg", "material/mfg_orlandiposter_2.jpg", "projects/mfg-orlandi_mono_specimen-3.jpg"],
   },
   
   
@@ -111,11 +115,7 @@ const projects = [
     title: "STW",
     images: ["material/mfg_stream_1.jpg", "material/mfg_stream_2.jpg", "material/mfg_stream_3.jpg"],
   },
-  {
-    page: "project-mfg-orlandimono.html",
-    title: "OMT",
-    images: ["material/mfg_orlandimono_1.jpg", "material/mfg_orlandimono_2.jpg", "material/mfg_orlandimono_3.jpg"],
-  },
+
  
    
   {
