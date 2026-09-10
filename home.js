@@ -47,7 +47,7 @@ const projects = [
   {
     page: "project-mfg-sences.html",
     title: "SEP",
-    images: ["material/mfg_sences_1.jpg", "material/mfg_sences_2.jpg", "material/mfg_sences_3.jpg"],
+    images: ["projects/mfg-sences-poster-1.jpg", "projects/mfg-sences-poster-8.jpg", "projects/mfg-sences-poster-2.jpg"],
   },
    {
     page: "project-mfg-cmt.html",
