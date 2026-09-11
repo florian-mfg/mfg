@@ -23,7 +23,7 @@ html {
   color: #fff;
   font-family: "ABC Oracle", Arial, sans-serif;
   font-size: var(--text-size);
-  line-height: 1;
+  line-height: 1.2;
 }
 
 body {
@@ -417,7 +417,6 @@ body:not(.is-home) .site-bar__plus {
   padding-top: 12px;
   padding-right: var(--page-margin);
   font-size: clamp(14px, 0.96vw, 18px);
-  line-height: 0.95;
 }
 
 .info-page .info-page__rings-stage {
@@ -532,7 +531,6 @@ body:not(.is-home) .site-bar__plus {
   min-height: 100vh;
   padding-top: 12px;
   font-size: clamp(14px, 0.96vw, 18px);
-  line-height: 0.95;
 }
 
 .legal-page__content {
@@ -833,7 +831,6 @@ body:not(.is-home) .site-bar__plus {
     padding-right: var(--page-margin);
     padding-bottom: var(--page-margin);
     font-size: 16px;
-    line-height: 1;
   }
 
   .info-page__details,
@@ -887,11 +884,17 @@ body:not(.is-home) .site-bar__plus {
 
   .legal-page {
     font-size: 16px;
-    line-height: 1;
   }
 
   .legal-page__content {
     width: 100%;
+  }
+
+  .info-page .info-page__rings-stage {
+    inset: var(--page-margin) auto auto var(--page-margin);
+    width: calc(100% - var(--page-margin) * 2);
+    height: calc(100vh - var(--page-margin) * 2);
+    height: calc(100dvh - var(--page-margin) * 2);
   }
 
   .rings-page__mark {

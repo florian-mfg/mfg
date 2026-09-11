@@ -92,6 +92,11 @@ const projects = [
     title: "MMB",
     images: ["material/mfg_mmb_1.jpg", "material/mfg_mmb_2.jpg", "material/mfg_mmb_3.jpg"],
   },
+   {
+    page: "project-mfg-bsb.html",
+    title: "BSI",
+    images: ["projects/mfg-bsb-1.jpg", "projects/mfg-bsb-18.jpg", "projects/mfg-bsb-3.jpg"],
+  },
   {
     page: "project-mfg-tisch.html",
     title: "T",
@@ -163,11 +168,7 @@ const projects = [
     images: ["material/mfg_stabitype_1.jpg", "material/mfg_stabitype_2.jpg", "material/mfg_stabitype_3.jpg"],
   },
   
-  {
-    page: "project-mfg-bsb.html",
-    title: "BSB",
-    images: ["material/mfg_bsb_1.jpg", "material/mfg_bsb_2.jpg", "material/mfg_bsb_3.jpg"],
-  },
+ 
 ];
 
 const grid = document.querySelector("#project-grid");
