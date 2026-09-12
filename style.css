@@ -411,7 +411,7 @@ body:not(.is-home) .site-bar__plus {
 
 .info-page {
   display: grid;
-  grid-template-columns: 24% 54.2% 1fr;
+  grid-template-columns: 24% 28.4% 1fr;
   align-items: start;
   min-height: 100vh;
   padding-top: 12px;
@@ -432,6 +432,9 @@ body:not(.is-home) .site-bar__plus {
 .info-page > section {
   position: relative;
   z-index: 1;
+  min-width: 0;
+  padding-right: var(--page-margin);
+  overflow-wrap: break-word;
   transition: opacity 160ms linear;
 }
 
@@ -841,6 +844,10 @@ body:not(.is-home) .site-bar__plus {
 
   .info-page__experience {
     margin-top: 0;
+  }
+
+  .info-page__linktree {
+    padding-bottom: clamp(90px, 30vw, 126px);
   }
 
   .info-page__details .info-block {

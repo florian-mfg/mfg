@@ -10,12 +10,12 @@ let activeIntervals = new Map();
 const projects = [
   {
     page: "project-mfg-anisotropy.html",
-    title: "AOR",
+    title: "ARA",
     images: ["material/mfg-anisotropy-thumbnail-1.jpg", "material/mfg-anisotropy-thumbnail-2.jpg", "material/mfg-anisotropy-thumbnail-3.jpg"],
   },
   {
     page: "project-mfg-collective-memory.html",
-    title: "CM",
+    title: "CMT",
     images: ["material/mfg-collective_memory-thumbnail-4.jpg", "material/mfg-collective_memory-thumbnail-2.jpg", "material/mfg-collective_memory-thumbnail-3.jpg"],
   },
    {
@@ -24,8 +24,8 @@ const projects = [
     images: ["material/mfg-sk_1.jpg", "material/mfg-sk_2.jpg", "material/mfg-sk_3.jpg"],
   },
   {
-    page: "project-mfg-ime.html",
-    title: "IME",
+    page: "project-mfg-imp.html",
+    title: "IMP",
     images: ["material/mfg-ime_1.jpg", "material/mfg-ime_2.jpg", "material/mfg-ime_3.jpg"],
   },
   
@@ -36,7 +36,7 @@ const projects = [
   },
   {
     page: "project-mfg-riff.html",
-    title: "RFF",
+    title: "RFI",
     images: ["material/mfg_riff_1.jpg", "material/mfg_riff_2.jpg", "material/mfg_riff_3.jpg"],
   },
   {
@@ -65,7 +65,7 @@ const projects = [
     images: ["projects/mfg-orlandi_mono-1.jpg", "projects/mfg-orlandi_mono-2.jpg", "projects/mfg-orlandi_mono-3.jpg"],
   },
   {
-    page: "project-mfg-cm.html",
+    page: "project-mfg-cmi.html",
     title: "CMI",
     images: ["material/mfg_cm_4.jpg", "material/mfg_cm_5.jpg", "material/mfg_cm_6.jpg"],
   },
@@ -83,8 +83,8 @@ const projects = [
  
   {
     page: "project-mfg-aufdersuche.html",
-    title: "ADS",
-    images: ["material/mfg_aufdersuche_1.jpg", "material/mfg_aufdersuche_2.jpg", "material/mfg_aufdersuche_3.jpg"],
+    title: "ASW",
+    images: ["projects/mfg-aufdersuche-1.jpg", "projects/mfg-aufdersuche-5.jpg", "projects/mfg-aufdersuche-6.jpg"],
   },
   
   {
