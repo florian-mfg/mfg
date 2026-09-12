@@ -89,7 +89,7 @@ const projects = [
   
   {
     page: "project-mfg-mmb.html",
-    title: "MMB",
+    title: "MBA",
     images: ["material/mfg_mmb_1.jpg", "material/mfg_mmb_2.jpg", "material/mfg_mmb_3.jpg"],
   },
    {
@@ -131,7 +131,7 @@ const projects = [
   
   {
     page: "project-mfg-sms.html",
-    title: "SMS",
+    title: "SMW",
     images: ["material/mfg_sms_1.jpg", "material/mfg_sms_2.jpg", "material/mfg_sms_3.jpg"],
   },
   {
@@ -143,21 +143,21 @@ const projects = [
   
   {
     page: "project-mfg-mfg-portfolio.html",
-    title: "MFG",
+    title: "MPE",
     images: ["material/mfg_mfg_portfolio_1.jpg", "material/mfg_mfg_portfolio_2.jpg", "material/mfg_mfg_portfolio_3.jpg"],
   },
   
   
   {
     page: "project-mfg-dgw.html",
-    title: "DGW",
+    title: "DWE",
     images: ["material/mfg_dgw_1.jpg", "material/mfg_dgw_2.jpg", "material/mfg_dgw_3.jpg"],
   },
   
   
   {
     page: "project-mfg-blu.html",
-    title: "BLU",
+    title: "BLI",
     images: ["material/mfg_blu_1.jpg", "material/mfg_blu_2.jpg", "material/mfg_blu_3.jpg"],
   },
   
