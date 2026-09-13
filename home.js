@@ -52,7 +52,7 @@ const projects = [
    {
     page: "project-mfg-cmt.html",
     title: "CMT",
-    images: ["material/mfg_cmt_1.jpg", "material/mfg_cmt_2.jpg", "material/mfg_cmt_3.jpg"],
+    images: ["projects/mfg-cmt-2.jpg", "projects/mfg-cmt-5.jpg", "projects/mfg-cmt-11.jpg"],
   },
   {
     page: "project-mfg-candleholder.html",
