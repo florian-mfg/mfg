@@ -90,7 +90,7 @@ const projects = [
   {
     page: "project-mfg-mmb.html",
     title: "MBA",
-    images: ["material/mfg_mmb_1.jpg", "material/mfg_mmb_2.jpg", "material/mfg_mmb_3.jpg"],
+    images: ["material/mfg-mmb-4-thumb.jpg", "material/mfg-mmb-2-thumb.jpg", "material/mfg-mmb-3-thumb.jpg"],
   },
    {
     page: "project-mfg-bsb.html",
