@@ -78,7 +78,7 @@ const projects = [
   {
     page: "project-mfg-freiheit-weniger.html",
     title: "FWE",
-    images: ["material/mfg_freiheit_weniger_1.jpg", "material/mfg_freiheit_weniger_2.jpg", "material/mfg_freiheit_weniger_3.jpg"],
+    images: ["material/mfg-freiheit-21.jpg", "material/mfg-freiheit-22.jpg", "material/mfg-freiheit-23.jpg"],
   },
  
   {
@@ -99,7 +99,7 @@ const projects = [
   },
   {
     page: "project-mfg-tisch.html",
-    title: "T",
+    title: "CTP",
     images: ["material/mfg_tisch_1.jpg", "material/mfg_tisch_2.jpg", "material/mfg_tisch_3.jpg"],
   },
   {
@@ -107,9 +107,7 @@ const projects = [
     title: "OMP",
     images: ["material/mfg_orlandiposter_1.jpg", "material/mfg_orlandiposter_2.jpg", "projects/mfg-orlandi_mono_specimen-3.jpg"],
   },
-  
-  
-  
+      
   {
     page: "project-mfg-tramtram.html",
     title: "TTT",
@@ -120,13 +118,11 @@ const projects = [
     title: "STW",
     images: ["material/mfg-stream-2-thumb.jpg", "material/mfg-stream-1-thumb.jpg", "material/mfg-stream-3-thumb.jpg"],
   },
-
- 
    
   {
     page: "project-mfg-riff-concept.html",
     title: "RFC",
-    images: ["material/mfg_riff_concept_1.jpg", "material/mfg_riff_concept_2.jpg", "material/mfg_riff_concept_3.jpg"],
+    images: ["projects/mfg-rfc-10.jpg", "projects/mfg-rfc-5.jpg", "projects/mfg-rfc-3.jpg"],
   },
   
   {
@@ -134,27 +130,25 @@ const projects = [
     title: "SMW",
     images: ["material/mfg_sms_1.jpg", "material/mfg_sms_2.jpg", "material/mfg_sms_3.jpg"],
   },
+
   {
     page: "project-mfg-nextsteps.html",
     title: "NSW",
     images: ["material/mfg_nextsteps_1.jpg", "material/mfg_nextsteps_2.jpg", "material/mfg_nextsteps_3.jpg"],
   },
-  
-  
+    
   {
     page: "project-mfg-mfg-portfolio.html",
     title: "MPE",
     images: ["material/mfg_mfg_portfolio_1.jpg", "material/mfg_mfg_portfolio_2.jpg", "material/mfg_mfg_portfolio_3.jpg"],
   },
-  
-  
+    
   {
     page: "project-mfg-dgw.html",
     title: "DWE",
     images: ["material/mfg_dgw_1.jpg", "material/mfg_dgw_2.jpg", "material/mfg_dgw_3.jpg"],
   },
-  
-  
+    
   {
     page: "project-mfg-blu.html",
     title: "BLI",
@@ -173,6 +167,62 @@ const projects = [
 
 const grid = document.querySelector("#project-grid");
 const scaleButtons = Array.from(document.querySelectorAll(".site-bar__scale-option"));
+const homeViewKey = "mfg-home-view";
+
+function readHomeView() {
+  try {
+    // History keeps each landing-page visit separate when using Back/Forward.
+    let view = window.history.state?.[homeViewKey];
+    const referrer = document.referrer ? new URL(document.referrer) : null;
+    const returningFromProject = referrer && projects.some(
+      (project) => new URL(project.page, window.location.href).href === referrer.href
+    );
+
+    if (!view && returningFromProject) {
+      view = JSON.parse(window.sessionStorage.getItem(homeViewKey));
+    }
+
+    if (view && Number.isFinite(view.scrollY) && view.scrollY >= 0 &&
+        Number.isInteger(view.scaleLevel) && view.scaleLevel >= 0 &&
+        view.scaleLevel < desktopLevels.length) {
+      return view;
+    }
+  } catch {
+    // Navigation still works when browser storage is unavailable.
+  }
+  return null;
+}
+
+function saveHomeView() {
+  const view = { scrollY: Math.max(0, window.scrollY), scaleLevel };
+  try {
+    window.history.replaceState({ ...window.history.state, [homeViewKey]: view }, "");
+  } catch {
+    // Session storage can still preserve the view if history is unavailable.
+  }
+  try {
+    window.sessionStorage.setItem(homeViewKey, JSON.stringify(view));
+  } catch {
+    // Browser Back can still restore the current history entry.
+  }
+}
+
+const savedHomeView = readHomeView();
+if (savedHomeView) {
+  scaleLevel = savedHomeView.scaleLevel;
+  window.history.scrollRestoration = "manual";
+}
+
+grid.addEventListener("click", (event) => {
+  if (event.target.closest(".project-tile")) saveHomeView();
+});
+window.addEventListener("pagehide", saveHomeView);
+window.addEventListener("pageshow", (event) => {
+  // A cached page already has its original layout and scroll position.
+  if (!event.persisted && savedHomeView) {
+    window.scrollTo({ top: savedHomeView.scrollY, left: 0, behavior: "instant" });
+  }
+});
 
 function renderHomeGrid() {
   grid.innerHTML = projects
