@@ -138,13 +138,13 @@ const projects = [
     title: "NSW",
     images: ["projects/mfg-nextsteps-13.jpg", "projects/mfg-nextsteps-4.jpg", "projects/mfg-nextsteps-5.jpg"],
   },
-    
+
   {
-    page: "project-mfg-mfg-portfolio.html",
-    title: "MPE",
-    images: ["material/mfg_mfg_portfolio_1.jpg", "material/mfg_mfg_portfolio_2.jpg", "material/mfg_mfg_portfolio_3.jpg"],
+    page: "project-mfg-stabitype.html",
+    title: "STT",
+    images: ["material/mfg_stabitype_1.jpg", "material/mfg_stabitype_2.jpg", "material/mfg_stabitype_3.jpg"],
   },
-    
+   
   {
     page: "project-mfg-dgw.html",
     title: "DWE",
@@ -158,11 +158,7 @@ const projects = [
   },
   
   
-  {
-    page: "project-mfg-stabitype.html",
-    title: "STT",
-    images: ["material/mfg_stabitype_1.jpg", "material/mfg_stabitype_2.jpg", "material/mfg_stabitype_3.jpg"],
-  },
+  
   
  
 ];

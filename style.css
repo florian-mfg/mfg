@@ -277,6 +277,10 @@ button {
   background: transparent;
 }
 
+.project-body .site-bar {
+  height: clamp(156px, 16.9vw, 312px);
+}
+
 .project-body .site-bar.is-hidden,
 .info-body .site-bar.is-hidden {
   transform: translateY(100%);
@@ -808,6 +812,10 @@ body:not(.is-home) .site-bar__plus {
   .info-body .site-bar,
   .info-body .site-bar:hover {
     height: clamp(90px, 30vw, 126px);
+  }
+
+  .project-body .site-bar {
+    height: clamp(117px, 39vw, 164px);
   }
 
   .project-back {
