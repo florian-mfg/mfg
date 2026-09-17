@@ -113,11 +113,17 @@ const projects = [
     title: "TTT",
     images: ["material/mfg_tramtram_1.jpg", "material/mfg_tramtram_2.jpg", "material/mfg_tramtram_3.jpg"],
   },
+  {
+    page: "project-mfg-sms.html",
+    title: "SMW",
+    images: ["projects/mfg-sms-33.jpg", "projects/mfg-sms-35.jpg", "projects/mfg-sms-34.jpg"],
+  },
  {
     page: "project-mfg-stream.html",
     title: "STW",
     images: ["material/mfg-stream-2-thumb.jpg", "material/mfg-stream-1-thumb.jpg", "material/mfg-stream-3-thumb.jpg"],
   },
+  
    
   {
     page: "project-mfg-riff-concept.html",
@@ -125,16 +131,12 @@ const projects = [
     images: ["projects/mfg-rfc-10.jpg", "projects/mfg-rfc-5.jpg", "projects/mfg-rfc-3.jpg"],
   },
   
-  {
-    page: "project-mfg-sms.html",
-    title: "SMW",
-    images: ["projects/mfg-sms-33.jpg", "projects/mfg-sms-35.jpg", "projects/mfg-sms-34.jpg"],
-  },
+  
 
   {
     page: "project-mfg-nextsteps.html",
     title: "NSW",
-    images: ["material/mfg_nextsteps_1.jpg", "material/mfg_nextsteps_2.jpg", "material/mfg_nextsteps_3.jpg"],
+    images: ["projects/mfg-nextsteps-13.jpg", "projects/mfg-nextsteps-4.jpg", "projects/mfg-nextsteps-5.jpg"],
   },
     
   {
