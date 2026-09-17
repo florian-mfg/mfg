@@ -128,7 +128,7 @@ const projects = [
   {
     page: "project-mfg-sms.html",
     title: "SMW",
-    images: ["material/mfg_sms_1.jpg", "material/mfg_sms_2.jpg", "material/mfg_sms_3.jpg"],
+    images: ["projects/mfg-sms-33.jpg", "projects/mfg-sms-35.jpg", "projects/mfg-sms-34.jpg"],
   },
 
   {
