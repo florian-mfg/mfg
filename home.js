@@ -154,7 +154,7 @@ const projects = [
   {
     page: "project-mfg-blu.html",
     title: "BLI",
-    images: ["material/mfg_blu_1.jpg", "material/mfg_blu_2.jpg", "material/mfg_blu_3.jpg"],
+    images: ["projects/mfg-blu-1.jpg", "projects/mfg-blu-3.jpg", "projects/mfg-blu-5.jpg"],
   },
   
   
