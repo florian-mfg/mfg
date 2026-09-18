@@ -123,6 +123,12 @@ const projects = [
     title: "STW",
     images: ["material/mfg-stream-2-thumb.jpg", "material/mfg-stream-1-thumb.jpg", "material/mfg-stream-3-thumb.jpg"],
   },
+
+  {
+    page: "project-mfg-productivityguide.html",
+    title: "PGM",
+    images: ["projects/mfg-productivityguide-7.jpg", "projects/mfg-productivityguide-6.jpg", "projects/mfg-productivityguide-3.jpg"],
+  },
   
    
   {
@@ -139,11 +145,7 @@ const projects = [
     images: ["projects/mfg-nextsteps-13.jpg", "projects/mfg-nextsteps-4.jpg", "projects/mfg-nextsteps-5.jpg"],
   },
 
-  {
-    page: "project-mfg-stabitype.html",
-    title: "STT",
-    images: ["material/mfg_stabitype_1.jpg", "material/mfg_stabitype_2.jpg", "material/mfg_stabitype_3.jpg"],
-  },
+  // 
    
   {
     page: "project-mfg-dgw.html",
@@ -156,7 +158,13 @@ const projects = [
     title: "BLI",
     images: ["projects/mfg-blu-1.jpg", "projects/mfg-blu-3.jpg", "projects/mfg-blu-5.jpg"],
   },
-  
+
+
+  // {
+  //   page: "project-mfg-stabitype.html",
+  //   title: "STT",
+  //   images: ["material/mfg_stabitype_1.jpg", "material/mfg_stabitype_2.jpg", "material/mfg_stabitype_3.jpg"],
+  // },
   
   
   
