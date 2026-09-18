@@ -419,6 +419,7 @@ body:not(.is-home) .site-bar__plus {
 }
 
 .info-page {
+  isolation: isolate;
   display: grid;
   grid-template-columns: 24% 28.4% 1fr;
   align-items: start;
@@ -445,6 +446,15 @@ body:not(.is-home) .site-bar__plus {
   padding-right: var(--page-margin);
   overflow-wrap: break-word;
   transition: opacity 160ms linear;
+}
+
+.info-page__gang {
+  visibility: hidden;
+}
+
+.info-page:has(.info-page__gang-trigger:hover) .info-page__gang,
+.info-page:has(.info-page__gang-trigger:focus-visible) .info-page__gang {
+  visibility: visible;
 }
 
 .info-focus-toggle {
@@ -540,13 +550,29 @@ body:not(.is-home) .site-bar__plus {
 }
 
 .legal-page {
+  isolation: isolate;
   min-height: 100vh;
   padding-top: 12px;
   font-size: clamp(14px, 0.96vw, 18px);
 }
 
 .legal-page__content {
+  position: relative;
+  z-index: 1;
   width: 66.666%;
+}
+
+.legal-page__gang,
+.info-page__gang {
+  position: fixed;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: auto;
+  height: 95vh;
+  pointer-events: none;
 }
 
 .legal-page h1,
@@ -910,6 +936,13 @@ body:not(.is-home) .site-bar__plus {
 
   .legal-page__content {
     width: 100%;
+  }
+
+  .legal-page__gang,
+  .info-page__gang {
+    width: 95vh;
+    height: auto;
+    transform: translate(-50%, -50%) rotate(90deg);
   }
 
   .info-page .info-page__rings-stage {
