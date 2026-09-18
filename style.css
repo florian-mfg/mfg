@@ -256,6 +256,8 @@ button {
 
 .project-body .site-bar,
 .info-body .site-bar,
+.legal-body .site-bar,
+.legal-body .site-bar:hover,
 .info-body .site-bar:hover {
   top: auto;
   bottom: 0;
@@ -273,6 +275,8 @@ button {
 }
 
 .info-body .site-bar,
+.legal-body .site-bar,
+.legal-body .site-bar:hover,
 .info-body .site-bar:hover {
   background: transparent;
 }
@@ -282,7 +286,8 @@ button {
 }
 
 .project-body .site-bar.is-hidden,
-.info-body .site-bar.is-hidden {
+.info-body .site-bar.is-hidden,
+.legal-body .site-bar.is-hidden {
   transform: translateY(100%);
 }
 
@@ -810,6 +815,8 @@ body:not(.is-home) .site-bar__plus {
 
   .project-body .site-bar,
   .info-body .site-bar,
+  .legal-body .site-bar,
+  .legal-body .site-bar:hover,
   .info-body .site-bar:hover {
     height: clamp(90px, 30vw, 126px);
   }

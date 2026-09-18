@@ -23,22 +23,27 @@
         <p class="project-page__description">Imprint is an experimental typographic tool inspired by industrial printing techniques, where a visual language emerges from imperfection. The tool transfers text onto a digital canvas through an interactive printing process. The way users interact with the canvas directly shapes how type appears, making each imprint a unique result of both human input and machine-like behavior. By shifting functional, utilitarian type into an expressive space, Imprint explores typography as a physical and temporal process rather than a fixed graphic form.</p>
       </header>
       <section class="project-media-grid" aria-label="IMT images">
-        <div class="project-media-grid__video">
-          <iframe src="https://player.vimeo.com/video/1197141716?badge=0&amp;autopause=0&amp;muted=1&amp;loop=1&amp;controls=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="mfg-imprint_showcase-1"></iframe>
+        <div class="project-media-grid__video project-media-grid__video--regular">
+          <iframe src="https://player.vimeo.com/video/1228021437?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;muted=1&amp;loop=1&amp;controls=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Anisotropie-FM-Instagram-4"></iframe>
           <button class="project-media-grid__video-toggle" type="button" aria-label="Start video" data-playing="false"></button>
         </div>
-        <img class="project-media-grid__regular" src="projects/mfg-imprint_1.jpg" alt="CM" loading="eager" />
-        <img class="project-media-grid__regular" src="projects/mfg-imprint_5.jpg" alt="CM" loading="eager" />
-        <img class="project-media-grid__regular" src="projects/mfg-imprint_3.jpg" alt="CM" loading="eager" />
-        <img class="project-media-grid__regular" src="projects/mfg-imprint_7.jpg" alt="CM" loading="eager" />
-        <img class="project-media-grid__regular" src="projects/mfg-imprint_8.jpg" alt="CM" loading="eager" />
-        <img class="project-media-grid__regular" src="projects/mfg-imprint_9.jpg" alt="CM" loading="eager" />
-        <img class="project-media-grid__regular" src="projects/mfg-imprint_10.jpg" alt="CM" loading="eager" />
-        <img class="project-media-grid__regular" src="projects/mfg-imprint_11.jpg" alt="CM" loading="eager" />
-        <img class="project-media-grid__regular" src="projects/mfg-imprint_12.jpg" alt="CM" loading="eager" />
-        <img class="project-media-grid__regular" src="projects/mfg-imprint_13.jpg" alt="CM" loading="eager" />
-        <img class="project-media-grid__regular" src="projects/mfg-imprint_14.jpg" alt="CM" loading="eager" />
-        <img class="project-media-grid__regular" src="projects/mfg-imprint_15.jpg" alt="CM" loading="eager" />
+        <img class="project-media-grid__regular" src="projects/mfg-imprint_5.jpg" alt="SK" loading="eager" />
+        <div class="project-media-grid__video project-media-grid__video--regular">
+          <iframe src="https://player.vimeo.com/video/1228021567?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;muted=1&amp;loop=1&amp;controls=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Anisotropie-FM-Instagram-2"></iframe>
+          <button class="project-media-grid__video-toggle" type="button" aria-label="Start video" data-playing="false"></button>
+        </div>
+
+        <img class="project-media-grid__regular" src="projects/mfg-imprint_21.jpg" alt="CM" loading="eager" />
+        <img class="project-media-grid__regular" src="projects/mfg-imprint_20.jpg" alt="CM" loading="eager" />
+        <img class="project-media-grid__regular" src="projects/mfg-imprint_17.jpg" alt="CM" loading="eager" />
+
+        <img class="project-media-grid__regular" src="projects/mfg-imprint_23.jpg" alt="CM" loading="eager" />
+        <img class="project-media-grid__regular" src="projects/mfg-imprint_24.jpg" alt="CM" loading="eager" />
+        <img class="project-media-grid__regular" src="projects/mfg-imprint_18.jpg" alt="CM" loading="eager" />
+
+        <img class="project-media-grid__regular" src="projects/mfg-imprint_16.jpg" alt="CM" loading="eager" />
+        <img class="project-media-grid__regular" src="projects/mfg-imprint_17.jpg" alt="CM" loading="eager" />
+        <img class="project-media-grid__regular" src="projects/mfg-imprint_18.jpg" alt="CM" loading="eager" />
         
       </section>
     </article>
@@ -58,27 +63,27 @@
     </nav>
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script>
-      const videoModule = document.querySelector(".project-media-grid__video");
+      if (window.Vimeo) {
+        document.querySelectorAll(".project-media-grid__video").forEach((videoModule) => {
+          const iframe = videoModule.querySelector("iframe");
+          const toggle = videoModule.querySelector(".project-media-grid__video-toggle");
+          const player = new Vimeo.Player(iframe);
 
-      if (videoModule && window.Vimeo) {
-        const iframe = videoModule.querySelector("iframe");
-        const toggle = videoModule.querySelector(".project-media-grid__video-toggle");
-        const player = new Vimeo.Player(iframe);
+          player.pause();
 
-        player.pause();
+          toggle.addEventListener("click", () => {
+            const isPlaying = toggle.dataset.playing === "true";
 
-        toggle.addEventListener("click", () => {
-          const isPlaying = toggle.dataset.playing === "true";
-
-          if (isPlaying) {
-            player.pause();
-            toggle.dataset.playing = "false";
-            toggle.setAttribute("aria-label", "Start video");
-          } else {
-            player.play();
-            toggle.dataset.playing = "true";
-            toggle.setAttribute("aria-label", "Pause video");
-          }
+            if (isPlaying) {
+              player.pause();
+              toggle.dataset.playing = "false";
+              toggle.setAttribute("aria-label", "Start video");
+            } else {
+              player.play();
+              toggle.dataset.playing = "true";
+              toggle.setAttribute("aria-label", "Pause video");
+            }
+          });
         });
       }
     </script>
