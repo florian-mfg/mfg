@@ -152,37 +152,29 @@ const projects = [
     title: "DWE",
     images: ["projects/mfg-wahrnehmung-thumb.jpg", "projects/mfg-wahrnehmung-3.jpg", "projects/mfg-wahrnehmung-6.jpg"],
   },
+  {
+    page: "project-mfg-portfolio_web_II.html",
+    title: "MPW-II",
+    images: ["material/mfg-portfolio_web_II-1.jpg", "material/mfg-portfolio_web_II-2.jpg", "material/mfg-portfolio_web_II-3.jpg"],
+  },
     
   {
     page: "project-mfg-blu.html",
     title: "BLI",
     images: ["projects/mfg-blu-1.jpg", "projects/mfg-blu-3.jpg", "projects/mfg-blu-5.jpg"],
   },
+  
   {
     page: "project-mfg-kleineschritte.html",
     title: "KSP",
-    images: ["projects/mfg-kleineschritte-1.jpg", "projects/mfg-kleineschritte-3.jpg", "projects/mfg-kleineschritte-2.jpg"],
+    images: ["projects/mfg-kleineschritte-7.jpg", "projects/mfg-kleineschritte-1.jpg", "projects/mfg-kleineschritte-2.jpg"],
   },
   {
     page: "project-mfg-portfolio_web_I.html",
     title: "MPW-I",
     images: ["projects/mfg-portfolio_web_first-4.jpg", "projects/mfg-portfolio_web_first-5.jpg", "projects/mfg-portfolio_web_first-6.jpg"],
   },
-  {
-    page: "project-mfg-portfolio_web_II.html",
-    title: "MPW-II",
-    images: ["projects/mfg-portfolio_web_first-4.jpg", "projects/mfg-portfolio_web_first-5.jpg", "projects/mfg-portfolio_web_first-6.jpg"],
-  },
-
-
-  // {
-  //   page: "project-mfg-stabitype.html",
-  //   title: "STT",
-  //   images: ["material/mfg_stabitype_1.jpg", "material/mfg_stabitype_2.jpg", "material/mfg_stabitype_3.jpg"],
-  // },
-  
-  
-  
+    
  
 ];
 
