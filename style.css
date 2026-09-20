@@ -283,6 +283,11 @@ button {
 
 .project-body .site-bar {
   height: clamp(156px, 16.9vw, 312px);
+  pointer-events: none;
+}
+
+.project-body .site-bar .project-back {
+  pointer-events: auto;
 }
 
 .project-body .site-bar.is-hidden,
