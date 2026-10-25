@@ -1,0 +1,17 @@
+# macOS metadata
+.DS_Store
+
+# Local secrets (keep documented examples trackable)
+.env
+.env.*
+!.env.example
+
+# Editor and temporary files
+*.swp
+*.swo
+*.tmp
+*~
+npm-debug.log*
+
+# Local security review, browser tests and comparison artifacts
+.local-security/

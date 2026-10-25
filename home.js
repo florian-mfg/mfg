@@ -238,35 +238,34 @@ window.addEventListener("pageshow", (event) => {
 });
 
 function renderHomeGrid() {
-  grid.innerHTML = projects
-    .map(
-      (project, projectIndex) => `
-        <a
-          class="project-tile"
-          href="${project.page}"
-          data-tile-index="${projectIndex}"
-          aria-label="View ${project.title}"
-        >
-          ${project.images
-            .map(
-              (image, imageIndex) => `
-                <img
-                  class="project-tile__image ${imageIndex === 0 ? "is-active" : ""}"
-                  src="${image}"
-                  alt="${project.title}"
-                  loading="${projectIndex < 10 ? "eager" : "lazy"}"
-                />
-              `
-            )
-            .join("")}
-          <span class="project-tile__caption">
-            <span>${project.title}</span>
-            <span>View Project</span>
-          </span>
-        </a>
-      `
-    )
-    .join("");
+  // Treat project data as text and attributes, never as HTML markup.
+  const tiles = projects.map((project, projectIndex) => {
+    const tile = document.createElement("a");
+    tile.className = "project-tile";
+    tile.setAttribute("href", project.page);
+    tile.dataset.tileIndex = String(projectIndex);
+    tile.setAttribute("aria-label", `View ${project.title}`);
+
+    project.images.forEach((source, imageIndex) => {
+      const image = document.createElement("img");
+      image.className = `project-tile__image ${imageIndex === 0 ? "is-active" : ""}`;
+      image.setAttribute("src", source);
+      image.alt = project.title;
+      image.loading = projectIndex < 10 ? "eager" : "lazy";
+      tile.appendChild(image);
+    });
+
+    const caption = document.createElement("span");
+    caption.className = "project-tile__caption";
+    const title = document.createElement("span");
+    title.textContent = project.title;
+    const action = document.createElement("span");
+    action.textContent = "View Project";
+    caption.append(title, action);
+    tile.appendChild(caption);
+    return tile;
+  });
+  grid.replaceChildren(...tiles);
 
   setupHoverCycling();
 }
