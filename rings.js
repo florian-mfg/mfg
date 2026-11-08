@@ -4,8 +4,8 @@ const rings = [];
 let nextRingId = 0;
 const ignoredCollisionPairs = new Set();
 const startsFull = stage.dataset.startFull === "true";
-const desktopMaxRings = startsFull ? 9 : 12;
-const mobileMaxRings = startsFull ? 9 : 8;
+const desktopMaxRings = startsFull ? 8 : 12;
+const mobileMaxRings = 8;
 const focusToggle = document.querySelector(".info-focus-toggle");
 const physicsStep = 1000 / 60;
 const maxFrameTime = physicsStep * 6;
@@ -277,10 +277,12 @@ function resetRings() {
   if (startsFull) {
     const mobile = window.matchMedia("(max-width: 700px)").matches;
     const positions = mobile
-      ? [[.22,.24], [.62,.24], [.42,.35], [.64,.42], [.86,.40], [.22,.48], [.58,.60], [.23,.74], [.55,.78]]
-      : [[.15,.16], [.45,.16], [.24,.38], [.63,.31], [.90,.30], [.34,.58], [.60,.69], [.74,.66], [.18,.81]];
+      ? [[.22,.24], [.62,.24], [.42,.35], [.64,.42], [.86,.40], [.22,.48], [.58,.60], [.23,.74]]
+      : [[.15,.16], [.45,.16], [.24,.38], [.63,.31], [.90,.30], [.34,.58], [.60,.69], [.74,.66]];
+    // Match the slower pace of the info page's multiplied rings on mobile.
+    const speed = mobile ? 0.72 : 1;
     positions.forEach(([x, y], index) => {
-      addRing(index % 2, Math.max(0, Math.min(area.width - size, area.width * x - size / 2)), Math.max(0, Math.min(area.height - size, area.height * y - size / 2)), index % 2 ? -.62 : .82, index % 3 ? .58 : -.74);
+      addRing(index % 2, Math.max(0, Math.min(area.width - size, area.width * x - size / 2)), Math.max(0, Math.min(area.height - size, area.height * y - size / 2)), (index % 2 ? -.62 : .82) * speed, (index % 3 ? .58 : -.74) * speed);
     });
     renderRings();
     return;
