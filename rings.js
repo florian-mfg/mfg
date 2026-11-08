@@ -279,8 +279,8 @@ function resetRings() {
     const positions = mobile
       ? [[.22,.24], [.62,.24], [.42,.35], [.64,.42], [.86,.40], [.22,.48], [.58,.60], [.23,.74]]
       : [[.15,.16], [.45,.16], [.24,.38], [.63,.31], [.90,.30], [.34,.58], [.60,.69], [.74,.66]];
-    // Match the slower pace of the info page's multiplied rings on mobile.
-    const speed = mobile ? 0.72 : 1;
+    // Match the slower pace of the info page's multiplied rings on all screens.
+    const speed = 0.72;
     positions.forEach(([x, y], index) => {
       addRing(index % 2, Math.max(0, Math.min(area.width - size, area.width * x - size / 2)), Math.max(0, Math.min(area.height - size, area.height * y - size / 2)), (index % 2 ? -.62 : .82) * speed, (index % 3 ? .58 : -.74) * speed);
     });
