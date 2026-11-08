@@ -251,7 +251,8 @@ function renderHomeGrid() {
       image.className = `project-tile__image ${imageIndex === 0 ? "is-active" : ""}`;
       image.setAttribute("src", source);
       image.alt = project.title;
-      image.loading = projectIndex < 10 ? "eager" : "lazy";
+      image.loading = imageIndex === 0 ? "eager" : "lazy";
+      image.fetchPriority = imageIndex === 0 ? "high" : "low";
       tile.appendChild(image);
     });
 

@@ -40,21 +40,21 @@
     const nav = document.querySelector('.site-bar');
     content.inert = true;
     nav.inert = true;
-    const images = [...content.querySelectorAll('img[loading="eager"]')];
+    // Only the initial preview for each project gates entry to the overview.
+    const images = [...content.querySelectorAll('.project-tile__image.is-active')];
     let settled = 0;
-    const update = () => { target = 90 * (++settled / Math.max(1, images.length)); };
-    images.forEach(image => {
+    const previewsReady = images.map(image => new Promise(resolve => {
+      const update = () => {
+        target = 100 * (++settled / images.length);
+        resolve();
+      };
       if (image.complete) update();
       else {
         image.addEventListener('load', update, { once: true });
         image.addEventListener('error', update, { once: true });
       }
-    });
-    const windowReady = new Promise(resolve => {
-      if (document.readyState === 'complete') resolve();
-      else window.addEventListener('load', resolve, { once: true });
-    });
-    Promise.all([windowReady, document.fonts.ready]).then(() => { loaded = true; });
+    }));
+    Promise.all(previewsReady).then(() => { loaded = true; });
     button.addEventListener('click', () => {
       if (!finished) return;
       finished = false;
