@@ -3,8 +3,9 @@ const ringSources = [stage.dataset.ringOne, stage.dataset.ringTwo];
 const rings = [];
 let nextRingId = 0;
 const ignoredCollisionPairs = new Set();
-const desktopMaxRings = 12;
-const mobileMaxRings = 8;
+const startsFull = stage.dataset.startFull === "true";
+const desktopMaxRings = startsFull ? 9 : 12;
+const mobileMaxRings = startsFull ? 9 : 8;
 const focusToggle = document.querySelector(".info-focus-toggle");
 const physicsStep = 1000 / 60;
 const maxFrameTime = physicsStep * 6;
@@ -252,14 +253,16 @@ function moveRings(now) {
 
   renderRings();
 
-  requestAnimationFrame(moveRings);
+  if (!startsFull || !stage.closest("[hidden]")) requestAnimationFrame(moveRings);
 }
 
 function startRings() {
   resetRings();
   lastFrameTime = null;
   accumulatedTime = 0;
-  requestAnimationFrame(moveRings);
+  if (!startsFull || !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    requestAnimationFrame(moveRings);
+  }
 }
 
 function resetRings() {
@@ -270,6 +273,18 @@ function resetRings() {
   rings.length = 0;
   ignoredCollisionPairs.clear();
   nextRingId = 0;
+
+  if (startsFull) {
+    const mobile = window.matchMedia("(max-width: 700px)").matches;
+    const positions = mobile
+      ? [[.22,.24], [.62,.24], [.42,.35], [.64,.42], [.86,.40], [.22,.48], [.58,.60], [.23,.74], [.55,.78]]
+      : [[.15,.16], [.45,.16], [.24,.38], [.63,.31], [.90,.30], [.34,.58], [.60,.69], [.74,.66], [.18,.81]];
+    positions.forEach(([x, y], index) => {
+      addRing(index % 2, Math.max(0, Math.min(area.width - size, area.width * x - size / 2)), Math.max(0, Math.min(area.height - size, area.height * y - size / 2)), index % 2 ? -.62 : .82, index % 3 ? .58 : -.74);
+    });
+    renderRings();
+    return;
+  }
 
   addRing(0, Math.min(area.width * 0.18, area.width - size), Math.min(area.height * 0.28, area.height - size), 0.82, 0.58);
   addRing(1, Math.min(area.width * 0.68, area.width - size), Math.min(area.height * 0.2, area.height - size), -0.62, 0.74);

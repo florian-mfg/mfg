@@ -1023,3 +1023,109 @@ body:not(.is-home) .site-bar__plus {
   }
 
 }
+
+/* Opening screen shares the info-page marks and project navigation arrow. */
+.is-loading,
+.is-loading body {
+  overflow: hidden;
+}
+.loading-page {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: #fff;
+  opacity: 1;
+  transition: opacity 150ms ease-out;
+}
+.loading-page.is-leaving {
+  opacity: 0;
+  pointer-events: none;
+}
+.loading-page[hidden] {
+  display: none;
+}
+.loading-page__progress {
+  position: absolute;
+  left: var(--page-margin);
+  bottom: 10px;
+  color: #000;
+  font-size: clamp(28px, 2.6vw, 52px);
+  line-height: 1;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.loading-page__enter {
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+  width: clamp(90px, 9vw, 150px);
+  border: 0;
+  padding: 0 12px 0 0;
+  background: transparent;
+  color: #000;
+  cursor: pointer;
+}
+.loading-page__enter:disabled {
+  cursor: wait;
+  opacity: 1;
+}
+.loading-page__enter img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform: rotate(180deg);
+}
+.loading-page .loading-page__enter img {
+  animation: loading-arrow-idle 1.8s ease-in-out infinite;
+}
+.loading-page__enter:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: -2px;
+}
+@keyframes loading-arrow-idle {
+  0%, 100% { transform: rotate(180deg) translateX(0); }
+  50% { transform: rotate(180deg) translateX(8px); }
+}
+@media (max-width: 700px) {
+  .loading-page__enter {
+    width: clamp(90px, 28vw, 126px);
+    padding-right: 10px;
+    bottom: 8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .loading-page { transition: none; }
+  .loading-page .loading-page__enter img { animation: none; }
+}
+
+/* Use the opening screen's short fade for navigation throughout the site. */
+@view-transition {
+  navigation: auto;
+}
+::view-transition-old(root) {
+  animation: page-fade-out 150ms ease-out both;
+}
+::view-transition-new(root) {
+  animation: page-fade-in 150ms ease-out both;
+}
+@keyframes page-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes page-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+/* Browsers without page transitions still get a gentle entrance. */
+@supports not (view-transition-name: root) {
+  body {
+    animation: page-fade-in 150ms ease-out both;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+  body { animation: none; }
+}
