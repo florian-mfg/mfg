@@ -283,7 +283,7 @@ function setupHoverCycling() {
 
     tile.addEventListener("mouseenter", () => {
       if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
-      hoverFrame = 0;
+      hoverFrame = 1;
       showFrame(hoverFrames[hoverFrame]);
       activeIntervals.set(
         tile,

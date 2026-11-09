@@ -14,7 +14,7 @@
   let target = 0;
   let current = 0;
   let loaded = false;
-  let finished = false;
+  let leaving = false;
 
   function animate(now) {
     const limit = loaded ? Math.max(current, Math.min(100, (now - started) / 12)) : target;
@@ -26,9 +26,6 @@
     if (current < 100) {
       requestAnimationFrame(animate);
     } else {
-      finished = true;
-      button.disabled = false;
-      button.setAttribute('aria-label', 'Enter project overview');
       page.classList.add('is-ready');
       window.setTimeout(() => { progress.hidden = true; }, 2000);
     }
@@ -40,7 +37,7 @@
     const nav = document.querySelector('.site-bar');
     content.inert = true;
     nav.inert = true;
-    // Only the initial preview for each project gates entry to the overview.
+    // Track initial previews without blocking entry to the overview.
     const images = [...content.querySelectorAll('.project-tile__image.is-active')];
     let settled = 0;
     const previewsReady = images.map(image => new Promise(resolve => {
@@ -56,8 +53,8 @@
     }));
     Promise.all(previewsReady).then(() => { loaded = true; });
     button.addEventListener('click', () => {
-      if (!finished) return;
-      finished = false;
+      if (leaving) return;
+      leaving = true;
       button.disabled = true;
       const completeTransition = () => {
         if (page.hidden) return;
