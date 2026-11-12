@@ -238,6 +238,7 @@ window.addEventListener("pageshow", (event) => {
 });
 
 function renderHomeGrid() {
+  const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   // Treat project data as text and attributes, never as HTML markup.
   const tiles = projects.map((project, projectIndex) => {
     const tile = document.createElement("a");
@@ -246,7 +247,9 @@ function renderHomeGrid() {
     tile.dataset.tileIndex = String(projectIndex);
     tile.setAttribute("aria-label", `View ${project.title}`);
 
-    project.images.forEach((source, imageIndex) => {
+    // Touch devices only need the first preview; avoid requesting hover images.
+    const previewImages = canHover ? project.images : project.images.slice(0, 1);
+    previewImages.forEach((source, imageIndex) => {
       const image = document.createElement("img");
       image.className = `project-tile__image ${imageIndex === 0 ? "is-active" : ""}`;
       image.setAttribute("src", source);
@@ -274,6 +277,7 @@ function renderHomeGrid() {
 function setupHoverCycling() {
   document.querySelectorAll(".project-tile").forEach((tile) => {
     const images = Array.from(tile.querySelectorAll(".project-tile__image"));
+    if (images.length < 2) return;
     const hoverFrames = [0, 1, 2];
     let hoverFrame = 0;
 
